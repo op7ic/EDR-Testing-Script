@@ -14,7 +14,7 @@ Because it is hard to figured out how accurate EDR's are. Most endpoint solution
 
 **Weaponization** 
 
-The script currently tries to execute only calc.exe via various methods. You can replace this easily with metasploit executable where needed.
+The script executes only calc.exe through numerous methods. You can replace this easily with metasploit executable where needed but the script will need to be modified to reflect this.
 
 **Tested On**
 
