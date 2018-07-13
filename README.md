@@ -6,7 +6,7 @@ Right now this script only works on Windows.
 
 **How To**
 
-Run the script and observe alerts coming to your EDR console. Cross-verify these alerts to check if your EDR solution identified them correctly. Most tests will just execute calc.exe.
+Run the script and observe alerts coming to your EDR console. Cross-verify these alerts to check if your EDR solution identified them correctly. Most tests will just execute calc.exe but it can be easily modified to try to download and exec i.e. Mimikatz.
 
 **Tested On**
 
