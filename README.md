@@ -22,4 +22,29 @@ The script executes only calc.exe through numerous methods. You can replace this
 * Windows 7 x64
 * Windows 10 x64
 
+**Coverage**
 
+| ATT&CK  | LOLBAS |
+| ------------- | ------------- |
+| T1197  | msiexec.exe  |
+| T1118  | diskshadow.exe  |
+| T1170  | esentutl.exe |
+| T1086  | replace.exe | 
+| T1121  | SyncAppvPublishingServer |
+| T1117  | hh.exe |
+| T1127  | ieexec.exe |
+| T1047  | Setupapi |
+| T1128  | Shdocvw |
+| T1085  | csc.exe |
+| T1130  |
+| T1191  | 
+| T1202  |
+| T1028  |
+| T1053  |
+| T1216  |
+| T1218  |
+| T1033  | 
+| T1140  |
+| T1183  |
+| T1096  |
+| T1055  |
