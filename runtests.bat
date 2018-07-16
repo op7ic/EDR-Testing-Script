@@ -3,12 +3,12 @@ REM Source of inspiration: https://attack.mitre.org/wiki/Main_Page
 REM Author: op7ic
 REM Description: Test the detection of various scripts/downloads/execs against your EDR solution.
 REM Warning: You might have to click on few windows to close script execution. Don't run this on live system!
-REM Version: 0.3a
+REM Version: 0.2a
 
 
 echo **********************************************
 echo *          EDR Testing Script                *
-echo *          Version: 0.3a                     *
+echo *          Version: 0.2a                     *
 echo *          by: op7ic                         *
 echo *                                            *
 echo *                                            *
@@ -392,28 +392,30 @@ echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v2.0.50727\csc.exe /o
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: payload.exe 
-sleep 3
+
+echo [+] Let tasks finish before killing all the files
+sleep 90
 
 echo [+] Cleanup
 
-del xxxFile.csproj
-del AllTheThings.dll
-del fi.b64
-del diskshadow.txt 
-del adrestore.exe
-del Default_File_Path.ps1
-del trace.etl
-del adrestore.exe
-del adrestore2.exe
-del trace.etl
-del trace.cab
-del calc.inf
-del 12.txt
-del payload.cs
-del payload.exe
-del testADS.txt
-del C:\windows\temp\url.url
-del Default_File_Path2.ps1
-del notepad.msi
-reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /f
-reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
+start "" cmd /c del xxxFile.csproj
+start "" cmd /c del AllTheThings.dll
+start "" cmd /c del fi.b64
+start "" cmd /c del diskshadow.txt 
+start "" cmd /c del adrestore.exe
+start "" cmd /c del Default_File_Path.ps1
+start "" cmd /c del trace.etl
+start "" cmd /c del adrestore.exe
+start "" cmd /c del adrestore2.exe
+start "" cmd /c del trace.etl
+start "" cmd /c del trace.cab
+start "" cmd /c del calc.inf
+start "" cmd /c del 12.txt
+start "" cmd /c del payload.cs
+start "" cmd /c del payload.exe
+start "" cmd /c del testADS.txt
+start "" cmd /c del C:\windows\temp\url.url
+start "" cmd /c del Default_File_Path2.ps1
+start "" cmd /c del notepad.msi
+start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /f
+start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
