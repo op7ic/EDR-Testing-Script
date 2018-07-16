@@ -465,3 +465,4 @@ start "" cmd /c del notepad.msi
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /f
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
 start "" cmd /c sc delete evilservice
+start "" cmd /c schtasks /delete /tn mysc /f
