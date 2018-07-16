@@ -265,13 +265,15 @@ echo Command Excuted:  for /f "tokens=1,2 delims= " %A in ('tasklist /fi ^"Image
 echo Execution Finished at %time% %date%
 sleep 3
 echo %time% %date% [+] T1033 - System Owner/User Discovery
-start "" cmd.exe /C whoami
+start "" cmd.exe /c whoami
 start "" wmic useraccount get /ALL
-start "" cmd.exe /C net group "domain administrators" /domain
+start "" cmd.exe /c net group "domain administrators" /domain
+start "" cmd.exe /c whoami & hostname & ipconfig /all & net user /domain 2>&1 & net group /domain 2>&1 & net group "domain admins" /domain 2>&1 & net group "Exchange Trusted Subsystem" /domain 2>&1 & net accounts /domain 2>&1 & net user 2>&1 & net localgroup administrators 2>&1 & netstat -an 2>&1 & tasklist 2>&1 & sc query 2>&1 & systeminfo 2>&1 & reg query "HKEY_CURRENT_USER\Software\Microsoft\Terminal Server Client\Default" 2>&1
 echo Execution Finished at %time% %date%
 echo Command Excuted: cmd.exe /C whoami
 echo Command Excuted: wmic useraccount get /ALL
 echo Command Excuted: cmd.exe /C net group "domain administrators" /domain
+
 sleep 3
 echo %time% %date% [+] T1158 - Hiding data in ADS
 echo "test123 > 12.txt
@@ -393,12 +395,14 @@ echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /out
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: payload.exe 
 
-echo %time% %date% [+] Testing advpack via rundll32 exec
+echo %time% %date% [+] Testing advpack exec
 start "" cmd /c rundll32.exe advpack.dll,RegisterOCX calc.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32.exe advpack.dll,RegisterOCX calc.exe
 
+
 echo [+] Let tasks finish before killing all the files
+
 sleep 90
 
 echo [+] Cleanup
