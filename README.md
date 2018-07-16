@@ -36,7 +36,7 @@ The script executes only calc.exe through numerous methods. You can replace this
 | T1047  | Setupapi |
 | T1128  | Shdocvw |
 | T1085  | csc.exe |
-| T1130  |
+| T1130  | advpack.dll |
 | T1191  | 
 | T1202  |
 | T1028  |

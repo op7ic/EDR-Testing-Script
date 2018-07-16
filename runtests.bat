@@ -393,6 +393,11 @@ echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /out
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: payload.exe 
 
+echo %time% %date% [+] Testing advpack via rundll32 exec
+start "" cmd /c rundll32.exe advpack.dll,RegisterOCX calc.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: rundll32.exe advpack.dll,RegisterOCX calc.exe
+
 echo [+] Let tasks finish before killing all the files
 sleep 90
 
