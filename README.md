@@ -41,7 +41,7 @@ The script executes only calc.exe through numerous methods. You can replace this
 | T1202  | sc |
 | T1028  | Register-cimprovider |
 | T1053  | control.exe |
-| T1216  |
+| T1216  | manage-bde.wsf |
 | T1218  |
 | T1033  | 
 | T1140  |

