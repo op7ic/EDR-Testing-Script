@@ -466,3 +466,7 @@ start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Si
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
 start "" cmd /c sc delete evilservice
 start "" cmd /c schtasks /delete /tn mysc /f
+
+echo "[+] Killing calc.exe 
+
+taskkill /F /IM calc.exe
