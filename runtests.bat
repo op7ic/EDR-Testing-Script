@@ -394,12 +394,33 @@ echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v2.0.50727\csc.exe /o
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /out:payload.exe payload.cs
 echo Command Excuted: payload.exe 
-
+sleep 3
 echo %time% %date% [+] Testing advpack exec
 start "" cmd /c rundll32.exe advpack.dll,RegisterOCX calc.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: rundll32.exe advpack.dll,RegisterOCX calc.exe
-
+sleep 3
+echo %time% %date% [+] Testing Scriptrunner exec
+start "" cmd /c scriptrunner.exe -appvscript calc.exe   
+echo Execution Finished at %time% %date%
+echo Command Excuted: scriptrunner.exe -appvscript calc.exe
+sleep 3
+echo %time% %date% [+] Testing SC exec
+start "" cmd /c sc create evilservice binPath= "C:\windows\system32\cmd.exe /c calc.exe" DisplayName= "evilservice" start= auto     
+start "" cmd /c sc start evilservice     
+echo Execution Finished at %time% %date%
+echo Command Excuted: sc create evilservice binPath= "C:\windows\system32\cmd.exe /c calc.exe" DisplayName= "evilservice" start= auto  
+echo Command Excuted: sc start evilservice
+sleep 3
+echo %time% %date% [+] Testing Register-cimprovider exec
+start "" cmd /c Register-cimprovider -path "AllTheThings.dll"   
+echo Execution Finished at %time% %date%
+echo Command Excuted: Register-cimprovider -path "AllTheThings.dll"   
+sleep 3
+echo %time% %date% [+] Testing control.exe exec
+start "" cmd /c control.exe AllTheThings.dll
+echo Execution Finished at %time% %date%
+echo Command Excuted: control.exe AllTheThings.dll
 
 echo [+] Let tasks finish before killing all the files
 

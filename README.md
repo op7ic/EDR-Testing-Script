@@ -37,10 +37,10 @@ The script executes only calc.exe through numerous methods. You can replace this
 | T1128  | Shdocvw |
 | T1085  | csc.exe |
 | T1130  | advpack.dll |
-| T1191  | 
-| T1202  |
-| T1028  |
-| T1053  |
+| T1191  | Scriptrunner |
+| T1202  | sc |
+| T1028  | Register-cimprovider |
+| T1053  | control.exe |
 | T1216  |
 | T1218  |
 | T1033  | 
