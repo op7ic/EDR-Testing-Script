@@ -1,6 +1,6 @@
 # EDR-Testing-Script
 
-This repository contains simple script to test EDR solutions against few Mitre ATT&CK framework tests (with some extras). This project is very much in its infancy right now. Only a small subset of tests are presently added but more will be added later. Chances are this script will be redesigned to facilitate this in the future. It is written as a single batch script so it can be easily uploaded and run (as opposed to un-zipped, compiled and installed). It can run either as a normal user or as Administrator however not giving it high privilages will fail some tests.
+This repository contains simple script to test EDR solutions against few Mitre ATT&CK framework tests along with few others. This project is very much in its infancy right now. It is written as a single batch script so it can be easily uploaded and run (as opposed to un-zipped, compiled and installed). It can run either as a normal user or as Administrator however not giving it high privilages will fail some tests.
 
 Right now this script only works on Windows and should work with most security endpoint solutions.
 
@@ -10,7 +10,7 @@ Run the [runtests](runtests.bat) script and observe alerts coming to your EDR co
 
 **Why**
 
-Because it is hard to figure out how accurate EDR's are. Most endpoint solutions are sold as magic bullet for security but it is actually difficult to check how many different malicious attacks are correctly identified, contained and observed. [MITRE](https://attack.mitre.org/wiki/Main_Page) & [LOLBAS](https://github.com/api0cradle/LOLBAS) do pretty good job at mapping common tools and techniques which are being used by attackers out there to pivot, execute code and progress through internal networks. The aim of this tool is to help verify if EDR really works.
+Because it is hard to figure out how accurate EDR's are. Most endpoint solutions are sold as magic bullet for security but it is actually difficult to check how many different malicious attacks are correctly identified, contained and observed. [MITRE](https://attack.mitre.org/wiki/Main_Page) & [LOLBAS](https://github.com/api0cradle/LOLBAS) do pretty good job at mapping common tools and techniques which are being used by attackers out there to pivot, execute code and progress through internal networks.
 
 **Weaponization** 
 
