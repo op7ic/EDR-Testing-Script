@@ -10,7 +10,7 @@ Run the [runtests](runtests.bat) script and observe alerts coming to your EDR co
 
 **Why**
 
-Because it is hard to figure out how accurate EDR's are. Most endpoint solutions are sold as magic bullet for security but it is actually difficult to check how many different malicious attacks are detected. [MITRE](https://attack.mitre.org/wiki/Main_Page) & [LOLBAS](https://github.com/api0cradle/LOLBAS) do pretty good job at mapping common tools and techniques which are being used by attackers out there to pivot, execute code and progress through internal networks. The aim of this tool is to help verify if EDR really works.
+Because it is hard to figure out how accurate EDR's are. Most endpoint solutions are sold as magic bullet for security but it is actually difficult to check how many different malicious attacks are correctly identified, contained and observed. [MITRE](https://attack.mitre.org/wiki/Main_Page) & [LOLBAS](https://github.com/api0cradle/LOLBAS) do pretty good job at mapping common tools and techniques which are being used by attackers out there to pivot, execute code and progress through internal networks. The aim of this tool is to help verify if EDR really works.
 
 **Weaponization** 
 
