@@ -6,15 +6,15 @@ Right now this script only works on Windows and should work with most security e
 
 **How To**
 
-Run the script and observe alerts coming to your EDR console. Cross-verify these alerts to check if your EDR solution identified them correctly. Most tests will just execute calc.exe but it can be easily modified to try to download and exec i.e. Mimikatz.
+Run the [runtests](runtests.bat) script and observe alerts coming to your EDR console. Cross-verify these alerts to check if your EDR solution identified them correctly. Most tests will just execute calc.exe but it can be easily modified to try to download and exec i.e. Mimikatz.
 
 **Why**
 
-Because it is hard to figured out how accurate EDR's are. Most endpoint solutions are sold as magic bullet for security but it is actually difficult to verify how much these products actually detect from the most common malicious techniques. [MITRE](https://attack.mitre.org/wiki/Main_Page) & [LOLBAS](https://github.com/api0cradle/LOLBAS) do pretty good job at mapping common tools and techniques which are being used by attackers out there to pivot, execute code and progress through internal networks. The aim of this tool is to help and verify if the use of tools and techniques is indeed detected by endpoint solution.
+Because it is hard to figure out how accurate EDR's are. Most endpoint solutions are sold as magic bullet for security but it is actually difficult to check how many different malicious attacks are detected. [MITRE](https://attack.mitre.org/wiki/Main_Page) & [LOLBAS](https://github.com/api0cradle/LOLBAS) do pretty good job at mapping common tools and techniques which are being used by attackers out there to pivot, execute code and progress through internal networks. The aim of this tool is to help verify if EDR really works.
 
 **Weaponization** 
 
-The script executes only calc.exe through numerous methods. You can replace this easily with metasploit executable where needed but the script will need to be modified to reflect this.
+The script executes calc.exe. You can replace this easily with metasploit executable where needed but the script will need to be modified to reflect this.
 
 **Tested On**
 
