@@ -48,3 +48,4 @@ The script executes only calc.exe through numerous methods. You can replace this
 | T1183  |
 | T1096  |
 | T1055  |
+| T1015  |

