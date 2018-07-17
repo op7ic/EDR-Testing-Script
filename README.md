@@ -24,7 +24,7 @@ The script executes calc.exe. You can replace this easily with metasploit execut
 
 **Coverage**
 
-The following attacks are currently covered by this script: 
+The following techniques are currently covered by this script: 
 
 | ATT&CK  | LOLBAS | Invoke-CradleCrafter |
 | ------------- | ------------- | ------------- |

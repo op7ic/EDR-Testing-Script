@@ -585,16 +585,6 @@ timeout 5
 
 REM ---- EOF Invoke-CradleCrafter Payloads ----
 
-
-echo **********************************************
-echo *         Testing EXTRA PAYLOADS             *
-echo **********************************************
-
-
-
-
-
-
 echo [+] Let tasks finish before deleting all the files
 
 timeout 60
@@ -627,4 +617,7 @@ start "" cmd /c schtasks /delete /tn mysc /f
 
 echo "[+] Killing calc.exe 
 
+REM kill any left over processes
 taskkill /F /IM calc.exe
+taskkill /F /IM cmd.exe 
+taskkill /F /IM hh.exe
