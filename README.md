@@ -24,25 +24,27 @@ The script executes only calc.exe through numerous methods. You can replace this
 
 **Coverage**
 
-| ATT&CK  | LOLBAS |
-| ------------- | ------------- |
-| T1197  | msiexec.exe  |
-| T1118  | diskshadow.exe  |
-| T1170  | esentutl.exe |
-| T1086  | replace.exe | 
-| T1121  | SyncAppvPublishingServer |
-| T1117  | hh.exe |
-| T1127  | ieexec.exe |
-| T1047  | Setupapi |
-| T1128  | Shdocvw |
-| T1085  | csc.exe |
-| T1130  | advpack.dll |
-| T1191  | Scriptrunner |
-| T1202  | sc |
-| T1028  | Register-cimprovider |
-| T1053  | control.exe |
-| T1216  | manage-bde.wsf |
-| T1218  |
+The following attacks are currently covered by this script: 
+
+| ATT&CK  | LOLBAS | Invoke-CradleCrafter |
+| ------------- | ------------- | ------------- |
+| T1197  | msiexec.exe  | MEMORY\PSWEBSTRING |
+| T1118  | diskshadow.exe  | MEMORY\PSWEBDATA |           
+| T1170  | esentutl.exe | MEMORY\PSWEBOPENREAD |
+| T1086  | replace.exe | MEMORY\NETWEBSTRING |
+| T1121  | SyncAppvPublishingServer | MEMORY\NETWEBDATA | 
+| T1117  | hh.exe | MEMORY\NETWEBOPENREAD |
+| T1127  | ieexec.exe | MEMORY\PSWEBREQUEST |
+| T1047  | Setupapi | MEMORY\PSRESTMETHOD | 
+| T1128  | Shdocvw | MEMORY\NETWEBREQUEST |
+| T1085  | csc.exe | MEMORY\PSSENDKEYS |
+| T1130  | advpack.dll | MEMORY\PSCOMWORD |
+| T1191  | Scriptrunner | MEMORY\PSCOMEXCEL |
+| T1202  | sc | MEMORY\PSCOMIE |
+| T1028  | Register-cimprovider | MEMORY\PSCOMMSXML |
+| T1053  | control.exe | MEMORY\PSINLINECSHARP |
+| T1216  | manage-bde.wsf | MEMORY\PSCOMPILEDCSHARP |
+| T1218  | | MEMORY\CERTUTIL |
 | T1033  | 
 | T1140  |
 | T1183  |
