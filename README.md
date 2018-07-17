@@ -45,9 +45,9 @@ The following attacks are currently covered by this script:
 | T1053  | control.exe | MEMORY\PSINLINECSHARP |
 | T1216  | manage-bde.wsf | MEMORY\PSCOMPILEDCSHARP |
 | T1218  | | MEMORY\CERTUTIL |
-| T1033  | 
-| T1140  |
-| T1183  |
-| T1096  |
+| T1033  | | DISK\PSWEBFILE | 
+| T1140  | | DISK\PSBITS |
+| T1183  | | DISK\BITSADMIN |
+| T1096  | | DISK\CERTUTIL |
 | T1055  |
 | T1015  |

