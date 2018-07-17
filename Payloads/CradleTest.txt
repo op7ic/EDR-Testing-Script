@@ -1,4 +1,5 @@
 # Script found here: https://pastebin.com/FvASwLVQ
+[System.Diagnostics.Process]::Start("calc.exe")
 
 Write-Host "THIS CRADLE WORKED!!!" -NoNewLine -ForegroundColor Yellow
 Write-Host " --" -NoNewLine -ForegroundColor White
