@@ -506,7 +506,7 @@ echo Command Excuted: PresentationHost.exe file://c:\windows\system32\calc.exe
 timeout 5
 
 
-echo %time% %date% [+] Testing PresentationHosts.exe exec
+echo %time% %date% [+] Testing Command Processor.exe exec
 start "" cmd /c reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /d "start calc.exe"
 start "" cmd /c cmd.exe
 echo Execution Finished at %time% %date%
@@ -568,7 +568,7 @@ echo ^</MSCONFIGTOOLS^> >> %windir%\System32\mscfgtlc.xml
 start "" cmd /c msconfig.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: msconfig.exe
-start "" cmd /c del %windir%\System32\mscfgtlc.xml
+
 
 timeout 5
 
@@ -708,6 +708,7 @@ start "" cmd /c del adrestore2.exe
 start "" cmd /c del trace.etl
 start "" cmd /c del trace.cab
 start "" cmd /c del calc.inf
+start "" cmd /c del %windir%\System32\mscfgtlc.xml
 start "" cmd /c del 12.txt
 start "" cmd /c del payload.cs
 start "" cmd /c del calc2.inf 
