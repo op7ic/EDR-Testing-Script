@@ -1,5 +1,6 @@
 REM Source of inspiration: https://github.com/api0cradle/LOLBAS/tree/master/OSBinaries
 REM Source of inspiration: https://attack.mitre.org/wiki/Main_Page
+REM Source of inspiration: https://github.com/danielbohannon/Invoke-CradleCrafter
 REM Author: op7ic
 REM Description:
 REM Test the detection of various scripts/downloads/execs against your EDR solution.
@@ -14,9 +15,7 @@ REM 0.4a - Added Invoke-CradleCrafter payloads
 REM 0.3a - More LOLBAS checks 
 REM 0.2a - More ATT&CK / LOLBAS checks
 REM      - Mapped out available tests in README.md
-REM 0.1a - Basic ATT&CK / LOLBAS checks addded
-
-
+REM 0.1a - Basic ATT&CK / LOLBAS checks added
 
 echo **********************************************
 echo *          EDR Testing Script                *
@@ -615,9 +614,9 @@ start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Im
 start "" cmd /c sc delete evilservice
 start "" cmd /c schtasks /delete /tn mysc /f
 
-echo "[+] Killing calc.exe 
+echo "[+] Killing leftover binaries
 
 REM kill any left over processes
 taskkill /F /IM calc.exe
-taskkill /F /IM cmd.exe 
 taskkill /F /IM hh.exe
+taskkill /F /IM cmd.exe 
