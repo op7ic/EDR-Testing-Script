@@ -44,10 +44,15 @@ The following techniques are currently covered by this script:
 | T1028  | Register-cimprovider | MEMORY\PSCOMMSXML |
 | T1053  | control.exe | MEMORY\PSINLINECSHARP |
 | T1216  | manage-bde.wsf | MEMORY\PSCOMPILEDCSHARP |
-| T1218  | | MEMORY\CERTUTIL |
-| T1033  | | DISK\PSWEBFILE | 
-| T1140  | | DISK\PSBITS |
-| T1183  | | DISK\BITSADMIN |
-| T1096  | | DISK\CERTUTIL |
-| T1055  |
-| T1015  |
+| T1218  | AppVLP.exe | MEMORY\CERTUTIL |
+| T1033  | ScriptRunner.exe | DISK\PSWEBFILE | 
+| T1140  | Pester.bat | DISK\PSBITS |
+| T1183  | powershellcustomhost.exe | DISK\BITSADMIN |
+| T1096  | PresentationHost.exe | DISK\CERTUTIL |
+| T1055  | Command Processor Registry | |
+| T1015  | gpup.exe | |
+| | VBoxDrvInst | | 
+| | InstallHinfSection | |
+| | Atbroker | |
+| | msconfig | |
+ 
