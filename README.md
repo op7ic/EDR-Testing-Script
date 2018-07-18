@@ -6,7 +6,7 @@ Right now this script only works on Windows and should work with most security e
 
 **How To**
 
-Run the [runtests](runtests.bat) script and observe alerts coming to your EDR console. Cross-verify these alerts to check if your EDR solution identified them correctly. Most tests will just execute calc.exe but it can be easily modified to try to download and exec i.e. Mimikatz.
+Run the [runtests](runtests.bat) script and observe alerts coming to your EDR console. Cross-verify these alerts to check if your EDR solution identified them correctly. Most tests will just execute calc.exe but it can be easily modified to try to download and exec i.e. Mimikatz. DO NOT USE ON PRODUCTION SYSTEMS. 
 
 **Why**
 
