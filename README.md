@@ -51,7 +51,7 @@ The following techniques are currently covered by this script:
 | T1096  | PresentationHost.exe | DISK\CERTUTIL |
 | T1055  | Command Processor Registry | |
 | T1015  | gpup.exe | |
-| | VBoxDrvInst | | 
+| T1138  | VBoxDrvInst | | 
 | | InstallHinfSection | |
 | | Atbroker | |
 | | msconfig | |
