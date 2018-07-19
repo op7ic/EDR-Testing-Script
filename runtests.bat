@@ -712,6 +712,15 @@ echo Command Excuted: winrs -r:http://127.0.0.1 calc.exe
 
 timeout 5
 
+REM Example: https://twitter.com/subtee/status/872244674609676288
+echo %time% %date% [+] Testing waitfor exec
+start "" cmd /c waitfor SDX & calc.exe
+timeout 3
+start "" cmd /c waitfor /s 127.0.0.1 /si SDX
+echo Execution Finished at %time% %date%
+echo Command Excuted: waitfor SDX & calc.exe
+echo Command Excuted: waitfor /s 127.0.0.1 /si SDX
+
 
 REM ---- EOF Custom Payloads ----
 

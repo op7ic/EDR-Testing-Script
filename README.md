@@ -31,7 +31,7 @@ The following techniques are currently covered by this script:
 | T1197  | msiexec.exe  | MEMORY\PSWEBSTRING | winnt32 |
 | T1118  | diskshadow.exe  | MEMORY\PSWEBDATA | winrs |     
 | T1170  | esentutl.exe | MEMORY\PSWEBOPENREAD | bitsadmin regsrv32  | 
-| T1086  | replace.exe | MEMORY\NETWEBSTRING |
+| T1086  | replace.exe | MEMORY\NETWEBSTRING | waitfor |
 | T1121  | SyncAppvPublishingServer | MEMORY\NETWEBDATA | 
 | T1117  | hh.exe | MEMORY\NETWEBOPENREAD |
 | T1127  | ieexec.exe | MEMORY\PSWEBREQUEST |
