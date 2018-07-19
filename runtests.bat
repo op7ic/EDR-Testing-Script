@@ -916,6 +916,7 @@ start "" cmd /c del Default_File_Path2.ps1
 start "" cmd /c del notepad.msi
 start "" cmd /c del shim.64
 start "" cmd /c del calc2.sdb
+start "" cmd /c del calc.sdb
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\paint.exe" /f
 start "" cmd /c reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\paint.exe" /f
 start "" cmd /c sc delete evilservice
