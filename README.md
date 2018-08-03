@@ -26,13 +26,13 @@ The script executes calc.exe. You can replace this easily with metasploit execut
 
 The following techniques are currently covered by this script: 
 
-| ATT&CK  | LOLBAS | Invoke-CradleCrafter | Custom |
+| ATT&CK  | LOLBAS | Invoke-CradleCrafter | Custom | Variants |
 | ------------- | ------------- | ------------- | ------------- |
-| T1197  | msiexec.exe  | MEMORY\PSWEBSTRING | winnt32 |
-| T1118  | diskshadow.exe  | MEMORY\PSWEBDATA | winrs |     
-| T1170  | esentutl.exe | MEMORY\PSWEBOPENREAD | bitsadmin regsrv32  | 
-| T1086  | replace.exe | MEMORY\NETWEBSTRING | waitfor |
-| T1121  | SyncAppvPublishingServer | MEMORY\NETWEBDATA | .SettingContent-ms file |
+| T1197  | msiexec.exe  | MEMORY\PSWEBSTRING | winnt32 |  bitsadmin regsrv32  |
+| T1118  | diskshadow.exe  | MEMORY\PSWEBDATA | winrs | manage-bde.wsf + rundll32 JS |
+| T1170  | esentutl.exe | MEMORY\PSWEBOPENREAD | waitfor | 
+| T1086  | replace.exe | MEMORY\NETWEBSTRING | .SettingContent-ms file  |
+| T1121  | SyncAppvPublishingServer | MEMORY\NETWEBDATA |
 | T1117  | hh.exe | MEMORY\NETWEBOPENREAD |
 | T1127  | ieexec.exe | MEMORY\PSWEBREQUEST |
 | T1047  | Setupapi | MEMORY\PSRESTMETHOD | 
