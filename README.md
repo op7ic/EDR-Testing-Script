@@ -26,7 +26,7 @@ The script executes calc.exe. You can replace this easily with metasploit execut
 
 The following techniques are currently covered by this script: 
 
-| ATT&CK  | LOLBAS | Invoke-CradleCrafter | Custom | Variants | Invoke-DOSfuscation | 
+| [ATT&CK](https://attack.mitre.org/)  | [LOLBAS](https://github.com/LOLBAS-Project/LOLBAS) | [Invoke-CradleCrafter](https://github.com/danielbohannon/Invoke-CradleCrafter)  | Custom | Variants | [Invoke-DOSfuscation](https://github.com/danielbohannon/Invoke-DOSfuscation) | 
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
 | T1197  | msiexec.exe  | MEMORY\PSWEBSTRING | winnt32 |  bitsadmin regsrv32  | BINARY\CMD\1 | 
 | T1118  | diskshadow.exe  | MEMORY\PSWEBDATA | winrs | manage-bde.wsf + rundll32 JS | BINARY\CMD\2 | 
@@ -58,3 +58,8 @@ The following techniques are currently covered by this script:
 | | dnscmd | | 
 | | java.exe | | 
 | | WseClientSvc.exe | |
+
+
+** Thanks ** 
+
+Everyone working on awesome projects like [LOLBAS](https://github.com/LOLBAS-Project/LOLBAS) or [Invoke-CradleCrafter](https://github.com/danielbohannon/Invoke-CradleCrafter) 
