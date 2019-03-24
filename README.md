@@ -26,29 +26,29 @@ The script executes calc.exe. You can replace this easily with metasploit execut
 
 The following techniques are currently covered by this script: 
 
-| ATT&CK  | LOLBAS | Invoke-CradleCrafter | Custom | Variants |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| T1197  | msiexec.exe  | MEMORY\PSWEBSTRING | winnt32 |  bitsadmin regsrv32  |
-| T1118  | diskshadow.exe  | MEMORY\PSWEBDATA | winrs | manage-bde.wsf + rundll32 JS |
-| T1170  | esentutl.exe | MEMORY\PSWEBOPENREAD | waitfor | |
-| T1086  | replace.exe | MEMORY\NETWEBSTRING | .SettingContent-ms file  | |
-| T1121  | SyncAppvPublishingServer | MEMORY\NETWEBDATA | |
-| T1117  | hh.exe | MEMORY\NETWEBOPENREAD |
-| T1127  | ieexec.exe | MEMORY\PSWEBREQUEST |
-| T1047  | Setupapi | MEMORY\PSRESTMETHOD | 
-| T1128  | Shdocvw | MEMORY\NETWEBREQUEST |
-| T1085  | csc.exe | MEMORY\PSSENDKEYS |
-| T1130  | advpack.dll | MEMORY\PSCOMWORD |
-| T1191  | Scriptrunner | MEMORY\PSCOMEXCEL |
-| T1202  | sc | MEMORY\PSCOMIE |
-| T1028  | Register-cimprovider | MEMORY\PSCOMMSXML |
-| T1053  | control.exe | MEMORY\PSINLINECSHARP |
-| T1216  | manage-bde.wsf | MEMORY\PSCOMPILEDCSHARP |
-| T1218  | AppVLP.exe | MEMORY\CERTUTIL |
-| T1033  | ScriptRunner.exe | DISK\PSWEBFILE | 
-| T1140  | Pester.bat | DISK\PSBITS |
-| T1183  | powershellcustomhost.exe | DISK\BITSADMIN |
-| T1096  | PresentationHost.exe | DISK\CERTUTIL |
+| ATT&CK  | LOLBAS | Invoke-CradleCrafter | Custom | Variants | Invoke-DOSfuscation | 
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
+| T1197  | msiexec.exe  | MEMORY\PSWEBSTRING | winnt32 |  bitsadmin regsrv32  | BINARY\CMD\1 | 
+| T1118  | diskshadow.exe  | MEMORY\PSWEBDATA | winrs | manage-bde.wsf + rundll32 JS | BINARY\CMD\2 | 
+| T1170  | esentutl.exe | MEMORY\PSWEBOPENREAD | waitfor | | BINARY\CMD\3 |
+| T1086  | replace.exe | MEMORY\NETWEBSTRING | .SettingContent-ms file  | | BINARY\PS\1 | 
+| T1121  | SyncAppvPublishingServer | MEMORY\NETWEBDATA | | | BINARY\PS\2 |
+| T1117  | hh.exe | MEMORY\NETWEBOPENREAD | | | BINARY\PS\3 |
+| T1127  | ieexec.exe | MEMORY\PSWEBREQUEST | | | ENCODING\1 |
+| T1047  | Setupapi | MEMORY\PSRESTMETHOD | | | ENCODING\2 |
+| T1128  | Shdocvw | MEMORY\NETWEBREQUEST | | | ENCODING\3 |
+| T1085  | csc.exe | MEMORY\PSSENDKEYS | | | PAYLOAD\CONCAT\1 |
+| T1130  | advpack.dll | MEMORY\PSCOMWORD | | | PAYLOAD\CONCAT\2 |
+| T1191  | Scriptrunner | MEMORY\PSCOMEXCEL | | | PAYLOAD\CONCAT\3 |
+| T1202  | sc | MEMORY\PSCOMIE | | | PAYLOAD\REVERSE\1 |
+| T1028  | Register-cimprovider | MEMORY\PSCOMMSXML | | | PAYLOAD\REVERSE\2 |
+| T1053  | control.exe | MEMORY\PSINLINECSHARP | | | PAYLOAD\REVERSE\3 |
+| T1216  | manage-bde.wsf | MEMORY\PSCOMPILEDCSHARP | | | PAYLOAD\FORCODE\1 |
+| T1218  | AppVLP.exe | MEMORY\CERTUTIL | | | PAYLOAD\FORCODE\2 |
+| T1033  | ScriptRunner.exe | DISK\PSWEBFILE | | | PAYLOAD\FORCODE\3 |
+| T1140  | Pester.bat | DISK\PSBITS | | | PAYLOAD\FINCODE\1 |
+| T1183  | powershellcustomhost.exe | DISK\BITSADMIN | | | PAYLOAD\FINCODE\2 |
+| T1096  | PresentationHost.exe | DISK\CERTUTIL | | | PAYLOAD\FINCODE\3 |
 | T1055  | Command Processor Registry | |
 | T1015  | gpup.exe | |
 | T1138  | VBoxDrvInst | | 
