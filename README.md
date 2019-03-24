@@ -60,6 +60,6 @@ The following techniques are currently covered by this script:
 | | WseClientSvc.exe | |
 
 
-** Thanks ** 
+**Thanks** 
 
 Everyone working on awesome projects like [LOLBAS](https://github.com/LOLBAS-Project/LOLBAS) or [Invoke-CradleCrafter](https://github.com/danielbohannon/Invoke-CradleCrafter) 
