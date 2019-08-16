@@ -1,0 +1,15 @@
+popup beacon_bottom {
+
+	menu "EDR TEST" {		
+			
+		item "RUN ALL TESTS" {
+			 bupload($1, script_resource("../runtests.bat"));
+	         bshell($1, "runtests.bat");		
+			}
+			
+		item "REMOVE RUNTEST.BAT" {
+	         bshell($1, "del /y runtests.bat");		
+			}		
+		
+	}
+}

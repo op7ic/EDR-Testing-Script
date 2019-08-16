@@ -60,6 +60,24 @@ The following techniques are currently covered by this script:
 | | WseClientSvc.exe | |
 
 
+** Run with Metasploit **
+If you want to run this script as part of Purple Team exercise then simple MSF module execution will do:
+
+```
+msf > use post/multi/manage/upload_exec
+msf post(upload_exec) > set lfile /tmp/runtests.bat
+lfile => /tmp/runtests.bat
+msf post(upload_exec) > set rfile C:\\Users\\Public\\runtests.bat
+rfile => C:\\Users\\Public\\runtests.bat
+msf post(upload_exec) > set session 1
+session => 1
+msf post(upload_exec) > run
+```
+
+** Run with Cobalt Strike **
+
+Using plugin in Cobalt folder, simply load it and click "EDR TEST > RUN ALL TESTS" against specified target.
+
 **Thanks** 
 
 Everyone working on awesome projects like [LOLBAS](https://github.com/LOLBAS-Project/LOLBAS) or [Invoke-CradleCrafter](https://github.com/danielbohannon/Invoke-CradleCrafter) 
