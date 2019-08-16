@@ -60,7 +60,8 @@ The following techniques are currently covered by this script:
 | | WseClientSvc.exe | |
 
 
-** Run with Metasploit **
+**Run with Metasploit**
+
 If you want to run this script as part of Purple Team exercise then simple MSF module execution will do:
 
 ```
@@ -74,7 +75,7 @@ session => 1
 msf post(upload_exec) > run
 ```
 
-** Run with Cobalt Strike **
+**Run with Cobalt Strike**
 
 Using plugin in Cobalt folder, simply load it and click "EDR TEST > RUN ALL TESTS" against specified target.
 
