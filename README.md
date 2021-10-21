@@ -14,7 +14,7 @@ Because it is hard to figure out how accurate EDR's are. Most EDR solutions are 
 
 **Weaponization** 
 
-The script executes calc.exe. You can replace this easily with metasploit executable where needed but payloads will need to be modified to reflect this.
+The script executes calc.exe. You can replace this easily with metasploit executable where needed but payloads will need to be modified to reflect this. As payloads are hosted on GitHub, if you really want to test your EDR I would suggest to move them to hosted server somewhere else as GitHub is generally not considered malicious. In theory, serving malicious payload (i.e. metasploit) hosted on external server would be much better way of detecting if EDR triggers or not.
 
 **Tested On**
 
